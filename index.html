@@ -38,6 +38,46 @@ main{max-width:700px;margin:0 auto;padding:24px 12px 80px;}
 .barcelona .day-header{background:#f0f7ff;border-left:4px solid var(--blue);}
 .departure .day-header{background:#f5f5f5;border-left:4px solid #888;}
 .predeparture .day-header{background:#f0fff4;border-left:4px solid var(--green);}
+.day-date{font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);min-width:60px;flex-shrink:0;}<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Spain Trip 2026</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap');
+:root{--red:#c0392b;--yellow:#f39c12;--dark:#1a1a2e;--light:#f8f5f0;--accent:#e8d5b7;--text:#2c2c2c;--muted:#666;--green:#27ae60;--blue:#2980b9;}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+html{font-size:16px;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--text);min-height:100vh;}
+.hero{background:linear-gradient(135deg,var(--dark) 0%,#16213e 50%,#0f3460 100%);color:white;text-align:center;padding:50px 16px 40px;position:relative;overflow:hidden;}
+.flag{font-size:2.5rem;margin-bottom:12px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,8vw,4rem);font-weight:700;letter-spacing:-1px;margin-bottom:8px;}
+.hero h1 span{color:var(--yellow);}
+.hero .subtitle{font-size:.85rem;font-weight:300;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;}
+.hero-cities{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;}
+.city-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:50px;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;}
+.tab-bar-wrap{background:var(--dark);position:sticky;top:0;z-index:100;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tab-bar-wrap::-webkit-scrollbar{display:none;}
+.tab-bar{display:flex;min-width:max-content;padding:0 8px;}
+.tab-btn{color:rgba(255,255,255,.6);background:none;border:none;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:14px 12px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;min-height:44px;}
+.tab-btn:hover,.tab-btn:active{color:white;}
+.tab-btn.active{color:white;border-bottom-color:var(--yellow);}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+main{max-width:700px;margin:0 auto;padding:24px 12px 80px;}
+.city-header{display:flex;align-items:center;gap:12px;margin:36px 0 16px;padding-bottom:12px;border-bottom:2px solid var(--accent);}
+.city-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.madrid .city-icon{background:#c0392b22;}.valencia .city-icon{background:#f39c1222;}.barcelona .city-icon{background:#2980b922;}
+.city-header h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;}
+.madrid .city-header h2{color:var(--red);}.valencia .city-header h2{color:#d68910;}.barcelona .city-header h2{color:var(--blue);}
+.day-card{background:white;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.day-header{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none;min-height:56px;}
+.madrid .day-header{background:#fdf2f2;border-left:4px solid var(--red);}
+.valencia .day-header{background:#fef9f0;border-left:4px solid var(--yellow);}
+.barcelona .day-header{background:#f0f7ff;border-left:4px solid var(--blue);}
+.departure .day-header{background:#f5f5f5;border-left:4px solid #888;}
+.predeparture .day-header{background:#f0fff4;border-left:4px solid var(--green);}
 .day-date{font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);min-width:60px;flex-shrink:0;}
 .day-title{font-weight:600;font-size:.92rem;flex:1;line-height:1.3;}
 .day-tags{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0;}
@@ -164,7 +204,7 @@ footer span{color:var(--yellow);}
 <div id="tab-itinerary" class="tab-panel active"><main>
   <div class="predeparture">
     <div class="city-header"><div class="city-icon">✈️</div><h2 style="color:#27ae60;font-family:'Playfair Display',serif;">Departure</h2></div>
-    <div class="day-card predeparture open">
+    <div class="day-card predeparture">
       <div class="day-header"><div class="day-date">Tue 4/28</div><div class="day-title">Fly to Madrid ✈️</div><div class="day-tags"><span class="tag tag-booked">JFK→MAD</span></div><div class="chevron">▼</div></div>
       <div class="day-body"><ul class="timeline">
         <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Head to JFK Airport</strong><p>Allow extra time for international check-in &amp; security</p></div></li>
@@ -174,7 +214,7 @@ footer span{color:var(--yellow);}
   </div>
   <div class="madrid">
     <div class="city-header"><div class="city-icon">🏟️</div><h2>Madrid</h2></div>
-    <div class="day-card madrid open">
+    <div class="day-card madrid">
       <div class="day-header"><div class="day-date">Wed 4/29</div><div class="day-title">Arrival + Madrid Open 🎾</div><div class="day-tags"><span class="tag tag-booked">🎾 Tennis</span></div><div class="chevron">▼</div></div>
       <div class="day-body"><ul class="timeline">
         <li><div class="tl-time">Afternoon</div><div class="tl-dot"></div><div class="tl-content"><strong>Arrive Madrid</strong><p>Transfer to hotel, check in, rest &amp; refresh</p></div></li>
@@ -201,7 +241,7 @@ footer span{color:var(--yellow);}
       <div class="day-header"><div class="day-date">Fri 5/1</div><div class="day-title">Toledo Day Trip 🏰</div><div class="day-tags"><span class="tag tag-flex">Labor Day</span></div><div class="chevron">▼</div></div>
       <div class="day-body"><ul class="timeline">
         <li><div class="tl-time">Morning</div><div class="tl-dot"></div><div class="tl-content"><strong>Breakfast, pack light bag</strong></div></li>
-        <li><div class="tl-time">10:15 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train to Toledo from Atocha</strong><p>~33 min journey</p></div></li>
+        <li><div class="tl-time">10:15 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train to Toledo</strong><p>Depart: Madrid Puerta de Atocha-Almudena Grandes · Arrive: Toledo station · ~33 min</p></div></li>
         <li><div class="tl-time">~11:15</div><div class="tl-dot"></div><div class="tl-content"><strong>Arrive Toledo — explore freely</strong><p>Toledo Cathedral · Santo Tomé Church · Jewish Quarter · Alcázar closed (Labor Day)</p></div></li>
         <li><div class="tl-time">1:30 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Lunch in Toledo</strong><p>Carcamusas or mazapán pastries</p></div></li>
         <li><div class="tl-time">~3:30 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Head back to station</strong></div></li>
@@ -215,12 +255,12 @@ footer span{color:var(--yellow);}
         <div class="scenario a"><h4>🟢 Match Sunday — train at 2:30 PM</h4><ul class="timeline">
           <li><div class="tl-time">Morning</div><div class="tl-dot"></div><div class="tl-content"><strong>Breakfast</strong></div></li>
           <li><div class="tl-time">Late AM</div><div class="tl-dot"></div><div class="tl-content"><strong>🛴 Madrid Segway Tour</strong><p>Sol · Plaza Mayor · La Latina</p></div></li>
-          <li><div class="tl-time">2:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong><p>Arr. ~5:45 PM</p></div></li>
+          <li><div class="tl-time">2:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong><p>Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla · arr. ~5:45 PM</p></div></li>
           <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Check in, explore El Carmen, dinner</strong></div></li>
         </ul></div>
         <div class="scenario b"><h4>🔴 Match Saturday — train at ~10:00 AM</h4><ul class="timeline">
           <li><div class="tl-time">Morning</div><div class="tl-dot"></div><div class="tl-content"><strong>Quick breakfast, check out</strong><p>Segway tour skipped</p></div></li>
-          <li><div class="tl-time">~10 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong></div></li>
+          <li><div class="tl-time">~10 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong><p>Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla</p></div></li>
           <li><div class="tl-time">Afternoon</div><div class="tl-dot"></div><div class="tl-content"><strong>Check in, explore Old Town</strong></div></li>
           <li><div class="tl-time">Evening</div><div class="tl-dot booked"></div><div class="tl-content"><strong>⚽ Valencia CF vs. Atlético</strong><p>Sector 256 · Row 14 · Seats 53 &amp; 54</p></div></li>
         </ul></div>
@@ -255,8 +295,8 @@ footer span{color:var(--yellow);}
     <div class="day-card barcelona">
       <div class="day-header"><div class="day-date">Tue 5/5</div><div class="day-title">Valencia → Barcelona</div><div class="chevron">▼</div></div>
       <div class="day-body"><ul class="timeline">
-        <li><div class="tl-time">10:40 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Taxi to Joaquín Sorolla station</strong></div></li>
-        <li><div class="tl-time">11:25 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Barcelona Sants</strong></div></li>
+        <li><div class="tl-time">10:40 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Taxi to Valencia Estació del Nord</strong><p>(Estación del Norte) · Art Nouveau station in the city centre</p></div></li>
+        <li><div class="tl-time">11:25 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Barcelona Sants</strong><p>Depart: Valencia Estació del Nord · Note: Euromed trains using Nord through June 2026 due to construction at Joaquín Sorolla</p></div></li>
         <li><div class="tl-time">2:50 PM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>Arrive → Borneta Hotel</strong></div></li>
         <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Gothic Quarter &amp; El Born stroll · Tapas dinner</strong></div></li>
       </ul></div>
@@ -333,22 +373,33 @@ footer span{color:var(--yellow);}
 <!-- ===== BOOKINGS ===== -->
 <div id="tab-checklist" class="tab-panel"><main>
   <div class="section-card" style="margin-top:0">
-    <h2>📋 Bookings</h2>
-    <h3>✅ Confirmed</h3>
-    <div class="check-item"><span>✅</span><div class="check-label">Mutua Madrid Open (×2)<span class="check-detail">Wed Apr 29 · 8 PM · A9 Este, Row 3, Seats 7 &amp; 9</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Flamenco Show – El Cortijo (×2)<span class="check-detail">Thu Apr 30 · 9 PM · #333560582 · Drink included</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Valencia CF vs. Atlético (×2)<span class="check-detail">Date TBD · Sector 256, Row 14, Seats 53 &amp; 54</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Paella Cooking Class<span class="check-detail">Mon May 4 · 11 AM · Order #45291 · 2 Adults</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Sagrada Família – 9:00 AM<span class="check-detail">Wed May 6 · Tickets pending delivery</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Park Güell – 9:30 AM (×2)<span class="check-detail">Thu May 7 · Booking #8075049</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">All Hotels<span class="check-detail">Madrid · Valencia · Barcelona — confirmed under Jack Briamonte</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Trains (Madrid→Valencia, Valencia→Barcelona)<span class="check-detail">Both booked</span></div></div>
-    <h3>❌ Still To Book</h3>
-    <div class="check-item"><span>❌</span><div class="check-label">Reina Sofía Museum tickets<span class="check-detail">Thu Apr 30 · Book ahead</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">Madrid Segway Tour<span class="check-detail">Confirm after soccer match date</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">Casa Batlló (~2:30–3 PM, TBD)<span class="check-detail">Thu May 7 · Book ASAP if going</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">La Pedrera / Casa Milà (optional)<span class="check-detail">Thu May 7</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">Picasso Museum (if chosen)<span class="check-detail">Fri May 8 · Book ahead</span></div></div>
+    <h2>📋 Bookings &amp; Reservations</h2>
+
+    <h3>🎭 Events</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Mutua Madrid Open – Quarterfinals (×2)<span class="check-detail">Wed Apr 29 · 8 PM · Sector A9 Este, Row 3, Seats 7 &amp; 9 · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Flamenco Show – Taberna Flamenca El Cortijo (×2)<span class="check-detail">Thu Apr 30 · 9 PM · #333560582 · Drink included · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Valencia CF vs. Atlético de Madrid (×2)<span class="check-detail">Date TBD · Sector 256, Row 14, Seats 53 &amp; 54 · 📱 Apple Wallet</span></div></div>
+
+    <h3>🏛️ Museums</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Reina Sofía Museum<span class="check-detail">Thu Apr 30 · Scheduled · Book tickets ahead</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Sagrada Família<span class="check-detail">Wed May 6 · 9:00 AM · Booked — tickets pending delivery</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Picasso Museum<span class="check-detail">Fri May 8 · Optional · Book ahead if chosen</span></div></div>
+
+    <h3>🗺️ Sightseeing</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Park Güell – Timed Entry (×2)<span class="check-detail">Thu May 7 · 9:30 AM · Booking #8075049</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Casa Batlló<span class="check-detail">Thu May 7 · ~2:30–3 PM · TBD — book ASAP if going</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">La Pedrera / Casa Milà<span class="check-detail">Thu May 7 · Optional — only if energy allows after Casa Batlló</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Madrid Segway Tour<span class="check-detail">Sat May 2 morning · Optional — confirm after soccer match date</span></div></div>
+
+    <h3>🍽️ Dining</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Paella Cooking Class – Valencia Club Cocina<span class="check-detail">Mon May 4 · 11:00 AM · Order #45291 · 2 Adults</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Dinner reservations<span class="check-detail">TBD — to be added</span></div></div>
+
+    <h3>🚆 Travel &amp; Lodging</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">All Hotels — confirmed under Jack Briamonte<span class="check-detail">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Madrid ↔ Toledo ↔ Madrid<span class="check-detail">Fri May 1 · Madrid Puerta de Atocha-Almudena Grandes · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Madrid → Valencia<span class="check-detail">Sat May 2 · Madrid-Chamartín-Clara Campoamor → Valencia Joaquín Sorolla · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Valencia → Barcelona<span class="check-detail">Tue May 5 · 11:25 AM · Valencia Estació del Nord → Barcelona Sants · 📱 Apple Wallet</span></div></div>
   </div>
 </main></div>
 
@@ -554,7 +605,7 @@ footer span{color:var(--yellow);}
     <h2>🗓 Free Time</h2>
     <p class="subtitle-text">Windows with no fixed plans — open for exploring, rest or spontaneous additions.</p>
     <div class="flex-item"><div class="flex-date">Wed 4/29</div><div class="flex-window">After hotel check-in → ~5:30 PM<div class="flex-note">Optional Malasaña vintage shopping</div></div></div>
-    <div class="flex-item"><div class="flex-date">Thu 4/30</div><div class="flex-window">~2:30–6:30 PM<div class="flex-note">After Reina Sofía, before dinner &amp; flamenco</div></div></div>
+    <div class="flex-item"><div class="flex-date">Thu 4/30</div><div class="flex-window">Free after lunch ~2:00 PM → 6:30 PM<div class="flex-note">Before dinner &amp; flamenco</div></div></div>
     <div class="flex-item"><div class="flex-date">Fri 5/1</div><div class="flex-window">All day in Toledo + after ~4:25 PM return<div class="flex-note">Self-guided Toledo; Labor Day wandering in Madrid evening</div></div></div>
     <div class="flex-item"><div class="flex-date">Sat 5/2</div><div class="flex-window">After hotel check-in ~5:45 PM onward<div class="flex-note">Assumes Sunday soccer match</div></div></div>
     <div class="flex-item"><div class="flex-date">Sun 5/3</div><div class="flex-window">All day beach/pool + after match (if Sunday)<div class="flex-note">Evening free if match was Saturday</div></div></div>
@@ -589,7 +640,5 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 </script>
-</body>
-</html>
 </body>
 </html>
