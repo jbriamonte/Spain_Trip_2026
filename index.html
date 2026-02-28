@@ -100,6 +100,8 @@ main{max-width:700px;margin:0 auto;padding:24px 12px 80px;}
 .ticket-tag.confirmed{background:#d5f5e3;color:#1e8449;}.ticket-tag.pending{background:#fef9e7;color:#b7770d;}.ticket-tag.info{background:#eaf2ff;color:var(--blue);}
 .ticket-warning{font-size:.74rem;color:#e74c3c;margin-top:8px;line-height:1.4;}
 .ticket-note{font-size:.74rem;color:var(--muted);margin-top:8px;line-height:1.4;}
+.pdf-btn{display:inline-block;background:#1a1a2e;color:white;text-decoration:none;padding:7px 14px;border-radius:7px;font-size:.75rem;font-weight:600;border:1px solid rgba(255,255,255,.15);transition:all .2s;}
+.pdf-btn:hover{background:#2980b9;border-color:#2980b9;}
 .ticket-section-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin:22px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);}
 .ticket-section-title:first-of-type{margin-top:0;}
 .maps-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
@@ -311,8 +313,7 @@ footer span{color:var(--yellow);}
 <div class="tab-bar-wrap">
   <div class="tab-bar">
     <button class="tab-btn active" data-tab="itinerary">🗺 Itinerary</button>
-    <button class="tab-btn" data-tab="tickets">🎟 Tickets</button>
-    <button class="tab-btn" data-tab="checklist">📋 Bookings</button>
+    <button class="tab-btn" data-tab="tickets">🎟 Tickets &amp; Reservations</button>
     <button class="tab-btn" data-tab="packing">🧳 Packing</button>
     <button class="tab-btn" data-tab="maps">📍 Maps</button>
     <button class="tab-btn" data-tab="arrival">🛬 Arrival</button>
@@ -470,43 +471,173 @@ footer span{color:var(--yellow);}
 <!-- ===== TICKETS ===== -->
 <div id="tab-tickets" class="tab-panel"><main>
   <div class="section-card" style="margin-top:0">
-    <h2>🎟 Tickets</h2>
-    <div class="ticket-section-title">🎭 Events</div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon tennis">🎾</div><div class="ticket-info"><div class="ticket-title">Mutua Madrid Open – Quarterfinals</div><div class="ticket-date">Wed Apr 29 · 8:00 PM · Caja Mágica, Madrid</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Sector A9 Este · Row 3 · Seats 7 &amp; 9</span><span class="ticket-tag info">€95 each</span></div><p class="ticket-warning">⚠️ Photo ID required · One-time entry · Ref: JXWE7C3RNW2J</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon flamenco">🎭</div><div class="ticket-info"><div class="ticket-title">Flamenco Show + Drink – Taberna Flamenca El Cortijo</div><div class="ticket-date">Thu Apr 30 · 9:00 PM · Madrid</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Booking #333560582</span><span class="ticket-tag info">Includes a drink 🥂</span></div><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon soccer">⚽</div><div class="ticket-info"><div class="ticket-title">Valencia CF vs. Atlético de Madrid</div><div class="ticket-date">Date TBD (Sat or Sun) · Camp de Mestalla, Valencia</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Sector 256 · Row 14 · Seats 53 &amp; 54</span><span class="ticket-tag info">€117.30 each</span><span class="ticket-tag pending">⏳ Date TBD</span></div><p class="ticket-warning">⚠️ Gates open 90 min early · Bring ID · Jack: A65291876 · Helena: A08690926</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon cooking">🥘</div><div class="ticket-info"><div class="ticket-title">Paella Cooking Class – Valencia Club Cocina</div><div class="ticket-date">Mon May 4 · 11:00 AM – 2:30 PM · Valencia</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Confirmed</span><span class="ticket-tag info">Order #45291 · 2 Adults · €124</span></div><p class="ticket-note">Booking confirmation · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon park">🌿</div><div class="ticket-info"><div class="ticket-title">Park Güell – Timed Entry</div><div class="ticket-date">Thu May 7 · 9:30 AM · Barcelona</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Booking #8075049 · €18 each</span></div><p class="ticket-note">Entry valid up to 30 min after slot · No re-entry · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon pending">⛪</div><div class="ticket-info"><div class="ticket-title">Sagrada Família</div><div class="ticket-date">Wed May 6 · 9:00 AM · Barcelona</div><div class="ticket-tags"><span class="ticket-tag pending">⏳ Tickets not yet received</span></div><p class="ticket-note">Check email closer to trip — add to Apple Wallet &amp; GitHub when received</p></div></div></div>
-    <div class="ticket-section-title">🏨 Hotels</div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon hotel">🏨</div><div class="ticket-info"><div class="ticket-title">All Hotels – Under Jack Briamonte</div><div class="ticket-date">Madrid · Valencia · Barcelona</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ All Confirmed</span></div><p class="ticket-note">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</p></div></div></div>
-    <div class="ticket-section-title">🚆 Trains</div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Madrid ↔ Toledo ↔ Madrid</div><div class="ticket-date">Friday, May 1 · Day trip</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span></div><p class="ticket-note">Depart: Madrid Puerta de Atocha-Almudena Grandes · Arrive: Toledo station</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Madrid → Valencia</div><div class="ticket-date">Saturday, May 2</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span><span class="ticket-tag info">2:30 PM if match Sun · ~10 AM if match Sat</span></div><p class="ticket-note">Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Valencia → Barcelona</div><div class="ticket-date">Tuesday, May 5 · 11:25 AM · Valencia Estació del Nord → Barcelona Sants</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span><span class="ticket-tag info">Arr. 2:50 PM</span></div><p class="ticket-warning">⚠️ Euromed trains using Nord station through June 2026</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
-  </div>
-</main></div>
+    <h2>🎟 Tickets &amp; Reservations</h2>
+    <p class="subtitle-text">All confirmed bookings. Click <strong>Open PDF</strong> to view the ticket file directly from GitHub.</p>
 
-<!-- ===== BOOKINGS ===== -->
-<div id="tab-checklist" class="tab-panel"><main>
-  <div class="section-card" style="margin-top:0">
-    <h2>📋 Bookings &amp; Reservations</h2>
-    <h3>🎭 Events</h3>
-    <div class="check-item"><span>✅</span><div class="check-label">Mutua Madrid Open – Quarterfinals (×2)<span class="check-detail">Wed Apr 29 · 8 PM · A9 Este, Row 3, Seats 7 &amp; 9 · 📱 Apple Wallet</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Flamenco Show – Taberna Flamenca El Cortijo (×2)<span class="check-detail">Thu Apr 30 · 9 PM · #333560582 · Drink included · 📱 Apple Wallet</span></div></div>
-    <div class="check-item"><span>✅</span><div class="check-label">Valencia CF vs. Atlético de Madrid (×2)<span class="check-detail">Date TBD · Sector 256, Row 14, Seats 53 &amp; 54 · 📱 Apple Wallet</span></div></div>
-    <h3>🏛️ Museums</h3>
+    <div class="ticket-section-title">🎭 Events</div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon tennis">🎾</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Mutua Madrid Open – Quarterfinals</div>
+          <div class="ticket-date">Wed Apr 29 · 8:00 PM · Caja Mágica, Madrid</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2 Confirmed</span><span class="ticket-tag info">Sector A9 Este · Row 3 · Seats 7 &amp; 9</span><span class="ticket-tag info">€95 each</span></div>
+          <p class="ticket-warning">⚠️ Photo ID required · One-time entry · Ref: JXWE7C3RNW2J</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Mutua%20Madrid%20Open.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon flamenco">🎭</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Flamenco Show + Drink – Taberna Flamenca El Cortijo</div>
+          <div class="ticket-date">Thu Apr 30 · 9:00 PM · Madrid</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2 Confirmed</span><span class="ticket-tag info">Booking #333560582</span><span class="ticket-tag info">Includes a drink 🥂</span></div>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Flamenco%20Show.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon soccer">⚽</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Valencia CF vs. Atlético de Madrid</div>
+          <div class="ticket-date">Date TBD (Sat or Sun) · Camp de Mestalla, Valencia</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2 Confirmed</span><span class="ticket-tag info">Sector 256 · Row 14 · Seats 53 &amp; 54</span><span class="ticket-tag info">€117.30 each</span><span class="ticket-tag pending">⏳ Date TBD</span></div>
+          <p class="ticket-warning">⚠️ Gates open 90 min early · Bring ID · Jack: A65291876 · Helena: A08690926</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Valencia%20CF%20Futbol%20Match.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon cooking">🥘</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Paella Cooking Class – Valencia Club Cocina</div>
+          <div class="ticket-date">Mon May 4 · 11:00 AM – 2:30 PM · Valencia</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ Confirmed</span><span class="ticket-tag info">Order #45291 · 2 Adults · €124</span></div>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Valnecia%20Paella%20Class.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon park">🌿</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Park Güell – Timed Entry</div>
+          <div class="ticket-date">Thu May 7 · 9:30 AM · Barcelona</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2 Confirmed</span><span class="ticket-tag info">Booking #8075049 · €18 each</span></div>
+          <p class="ticket-note">Entry valid up to 30 min after slot · No re-entry</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Park%20Guell%20Tickets.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon pending">⛪</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Sagrada Família</div>
+          <div class="ticket-date">Wed May 6 · 9:00 AM · Barcelona</div>
+          <div class="ticket-tags"><span class="ticket-tag pending">⏳ Tickets not yet received</span></div>
+          <p class="ticket-note">Check email closer to trip — upload PDF to GitHub /tickets/ folder when received</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-section-title">🏨 Hotels</div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon hotel">🏨</div>
+        <div class="ticket-info">
+          <div class="ticket-title">All Hotels – Under Jack Briamonte</div>
+          <div class="ticket-date">Madrid · Valencia · Barcelona</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ All Confirmed</span></div>
+          <p class="ticket-note">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-section-title">🚆 Trains</div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon train">🚆</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Madrid ↔ Toledo ↔ Madrid</div>
+          <div class="ticket-date">Friday, May 1 · Day trip</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span></div>
+          <p class="ticket-note">Depart: Madrid Puerta de Atocha-Almudena Grandes → Toledo station · ~33 min</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Train%20Tickets%20-%20Madrid_Toledo_Madrid.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon train">🚆</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Madrid → Valencia</div>
+          <div class="ticket-date">Saturday, May 2</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span><span class="ticket-tag info">2:30 PM if match Sun · ~10 AM if match Sat</span></div>
+          <p class="ticket-note">Depart: Madrid-Chamartín-Clara Campoamor → Valencia Joaquín Sorolla</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Train%20Tickets%20-%20Madrid_Valencia.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-top">
+        <div class="ticket-icon train">🚆</div>
+        <div class="ticket-info">
+          <div class="ticket-title">Valencia → Barcelona</div>
+          <div class="ticket-date">Tuesday, May 5 · 11:25 AM · Valencia Estació del Nord → Barcelona Sants · Arr. 2:50 PM</div>
+          <div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span></div>
+          <p class="ticket-warning">⚠️ Euromed trains using Nord station through June 2026</p>
+          <div style="margin-top:10px;">
+            <a class="pdf-btn" href="https://github.com/Jbriamonte/Spain_Trip_2026/blob/main/tickets/Train%20Tickets%20-%20Valencia_Barcelona.pdf" target="_blank">📄 Open PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ticket-section-title">📋 Booking Status</div>
+    <p class="subtitle-text" style="margin-bottom:12px;">Full status of all reservations and optional items.</p>
+
+    <h3>🏛️ Museums &amp; Sightseeing</h3>
     <div class="check-item"><span>✅</span><div class="check-label">Reina Sofía Museum<span class="check-detail">Thu Apr 30 · Scheduled</span></div></div>
     <div class="check-item"><span>✅</span><div class="check-label">Sagrada Família – 9:00 AM<span class="check-detail">Wed May 6 · Booked — tickets pending delivery</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">Picasso Museum<span class="check-detail">Fri May 8 · Optional · Book ahead if chosen</span></div></div>
-    <h3>🗺️ Sightseeing</h3>
     <div class="check-item"><span>✅</span><div class="check-label">Park Güell – 9:30 AM (×2)<span class="check-detail">Thu May 7 · Booking #8075049</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Picasso Museum<span class="check-detail">Fri May 8 · Optional · Book ahead if chosen</span></div></div>
     <div class="check-item"><span>❌</span><div class="check-label">Casa Batlló<span class="check-detail">Thu May 7 · ~2:30–3 PM · TBD — book ASAP if going</span></div></div>
     <div class="check-item"><span>❌</span><div class="check-label">La Pedrera / Casa Milà (optional)<span class="check-detail">Thu May 7 · Only if energy allows after Casa Batlló</span></div></div>
     <div class="check-item"><span>❌</span><div class="check-label">Madrid Segway Tour<span class="check-detail">Sat May 2 morning · Optional — confirm after soccer match date</span></div></div>
+
     <h3>🍽️ Dining</h3>
     <div class="check-item"><span>✅</span><div class="check-label">Paella Cooking Class – Valencia Club Cocina<span class="check-detail">Mon May 4 · 11:00 AM · Order #45291 · 2 Adults</span></div></div>
-    <div class="check-item"><span>❌</span><div class="check-label">Dinner reservations<span class="check-detail">TBD — to be added</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Dinner reservations (Raza, Trèsde, Karak, Gresca, Suculent…)<span class="check-detail">TBD — see Meal Cheat Sheet for priority list</span></div></div>
+
     <h3>🚆 Travel &amp; Lodging</h3>
     <div class="check-item"><span>✅</span><div class="check-label">All Hotels — confirmed under Jack Briamonte<span class="check-detail">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</span></div></div>
     <div class="check-item"><span>✅</span><div class="check-label">Train: Madrid ↔ Toledo ↔ Madrid<span class="check-detail">Fri May 1 · 📱 Apple Wallet</span></div></div>
