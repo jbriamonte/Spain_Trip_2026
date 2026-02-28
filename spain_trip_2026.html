@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Spain Trip 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#c0392b;--yellow:#f39c12;--dark:#1a1a2e;--light:#f8f5f0;--accent:#e8d5b7;
+  --text:#2c2c2c;--muted:#666;--green:#27ae60;--blue:#2980b9;
+  --bg:#0c0a08;--surface:#161210;--card:#1c1814;--card2:#211d18;
+  --border:rgba(255,255,255,0.07);--border-hi:rgba(255,255,255,0.14);
+  --ftext:#ede6d8;--fmuted:#7a6e5e;--faint:#3a3028;
+  --gold:#c8923a;--gold-hi:#e8b05a;
+  --VLC:#d4472a;--MAD:#3a6bb5;--TOL:#6b8a3a;--BCN:#9b3ab5;
+  --fgreen:#3a8a5a;--fred:#b84040;--amber:#b87830;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+body{font-family:'Inter',sans-serif;background:var(--light);color:var(--text);min-height:100vh;}
+
+.hero{background:linear-gradient(135deg,var(--dark) 0%,#16213e 50%,#0f3460 100%);color:white;text-align:center;padding:50px 16px 40px;}
+.flag{font-size:2.5rem;margin-bottom:12px;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,8vw,4rem);font-weight:700;letter-spacing:-1px;margin-bottom:8px;}
+.hero h1 span{color:var(--yellow);}
+.hero .subtitle{font-size:.85rem;font-weight:300;opacity:.8;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;}
+.hero-cities{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;}
+.city-pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 12px;border-radius:50px;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;}
+
+.tab-bar-wrap{background:var(--dark);position:sticky;top:0;z-index:100;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.tab-bar-wrap::-webkit-scrollbar{display:none;}
+.tab-bar{display:flex;min-width:max-content;padding:0 8px;}
+.tab-btn{color:rgba(255,255,255,.6);background:none;border:none;font-family:'Inter',sans-serif;font-size:.7rem;font-weight:500;letter-spacing:.8px;text-transform:uppercase;padding:14px 12px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;white-space:nowrap;min-height:44px;}
+.tab-btn:hover{color:white;}
+.tab-btn.active{color:white;border-bottom-color:var(--yellow);}
+.tab-btn.food-tab.active{color:#e8b878;border-bottom-color:#c8883a;}
+.tab-divider{color:rgba(255,255,255,.2);padding:14px 4px;font-size:.7rem;display:flex;align-items:center;}
+
+.tab-panel{display:none;}
+.tab-panel.active{display:block;}
+
+main{max-width:700px;margin:0 auto;padding:24px 12px 80px;}
+.city-header{display:flex;align-items:center;gap:12px;margin:36px 0 16px;padding-bottom:12px;border-bottom:2px solid var(--accent);}
+.city-icon{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.madrid .city-icon{background:#c0392b22;}.valencia .city-icon{background:#f39c1222;}.barcelona .city-icon{background:#2980b922;}
+.city-header h2{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;}
+.madrid .city-header h2{color:var(--red);}.valencia .city-header h2{color:#d68910;}.barcelona .city-header h2{color:var(--blue);}
+.day-card{background:white;border-radius:12px;margin-bottom:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.day-header{display:flex;align-items:center;gap:10px;padding:14px 16px;cursor:pointer;user-select:none;min-height:56px;}
+.madrid .day-header{background:#fdf2f2;border-left:4px solid var(--red);}
+.valencia .day-header{background:#fef9f0;border-left:4px solid var(--yellow);}
+.barcelona .day-header{background:#f0f7ff;border-left:4px solid var(--blue);}
+.departure .day-header{background:#f5f5f5;border-left:4px solid #888;}
+.predeparture .day-header{background:#f0fff4;border-left:4px solid var(--green);}
+.day-date{font-size:.7rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;color:var(--muted);min-width:60px;flex-shrink:0;}
+.day-title{font-weight:600;font-size:.92rem;flex:1;line-height:1.3;}
+.day-tags{display:flex;gap:4px;flex-wrap:wrap;flex-shrink:0;}
+.tag{font-size:.65rem;padding:2px 7px;border-radius:20px;font-weight:500;white-space:nowrap;}
+.tag-booked{background:#d5f5e3;color:#1e8449;}.tag-tbd{background:#fef9e7;color:#b7770d;}.tag-flex{background:#eaf2ff;color:var(--blue);}
+.chevron{color:var(--muted);font-size:.8rem;transition:transform .3s;flex-shrink:0;margin-left:4px;}
+.day-card.open .chevron{transform:rotate(180deg);}
+.day-body{display:none;padding:16px;border-top:1px solid #f0f0f0;}
+.day-card.open .day-body{display:block;}
+.timeline{list-style:none;}
+.timeline li{display:flex;gap:10px;margin-bottom:12px;position:relative;}
+.timeline li:not(:last-child)::before{content:'';position:absolute;left:22px;top:22px;bottom:-4px;width:1px;background:#e8e8e8;}
+.tl-time{font-size:.65rem;font-weight:600;color:var(--muted);min-width:48px;padding-top:3px;text-align:right;flex-shrink:0;}
+.tl-dot{width:18px;height:18px;border-radius:50%;background:white;border:2px solid #ddd;flex-shrink:0;margin-top:2px;z-index:1;}
+.tl-dot.booked{border-color:var(--green);background:#d5f5e3;}.tl-dot.highlight{border-color:var(--yellow);background:#fef9e7;}
+.tl-content{flex:1;min-width:0;}
+.tl-content strong{font-weight:600;font-size:.88rem;display:block;line-height:1.3;}
+.tl-content p{font-size:.8rem;color:var(--muted);margin-top:2px;line-height:1.5;}
+.bike-route{background:#f0f7ff;border-radius:8px;padding:12px;margin-top:8px;}
+.bike-route h4{font-size:.72rem;font-weight:700;color:var(--blue);margin-bottom:8px;letter-spacing:.5px;text-transform:uppercase;}
+.bike-stop{display:flex;gap:8px;margin-bottom:7px;align-items:flex-start;font-size:.8rem;}
+.bike-num{width:18px;height:18px;background:var(--blue);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700;flex-shrink:0;margin-top:1px;}
+.scenario{background:#f8f8f8;border-radius:8px;padding:12px;margin-bottom:10px;}
+.scenario h4{font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;color:var(--muted);}
+.scenario.a{border-top:3px solid var(--green);}.scenario.b{border-top:3px solid #e74c3c;}
+
+.section-card{background:white;border-radius:12px;padding:20px 16px;margin-top:16px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.section-card:first-child{margin-top:0;}
+.section-card h2{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:4px;color:var(--dark);}
+.section-card .subtitle-text{font-size:.8rem;color:var(--muted);margin-bottom:16px;line-height:1.5;}
+.section-card h3{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:18px 0 8px;padding-bottom:5px;border-bottom:1px solid #f0f0f0;}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:9px 0;border-bottom:1px solid #f9f9f9;font-size:.85rem;}
+.check-item:last-child{border-bottom:none;}
+.check-item input[type=checkbox]{width:18px;height:18px;accent-color:var(--green);cursor:pointer;flex-shrink:0;margin-top:1px;}
+.check-label{flex:1;line-height:1.4;}
+.check-detail{font-size:.72rem;color:var(--muted);margin-top:2px;display:block;}
+.ticket-card{background:white;border:1px solid #eee;border-radius:10px;padding:14px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.04);}
+.ticket-top{display:flex;gap:12px;align-items:flex-start;}
+.ticket-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.ticket-icon.tennis{background:#fff3e0;}.ticket-icon.flamenco{background:#fce4ec;}.ticket-icon.soccer{background:#e8f5e9;}.ticket-icon.park{background:#e3f2fd;}.ticket-icon.cooking{background:#fff8e1;}.ticket-icon.pending{background:#f5f5f5;}.ticket-icon.hotel{background:#f3e5f5;}.ticket-icon.train{background:#e8f5e9;}
+.ticket-info{flex:1;min-width:0;}
+.ticket-title{font-weight:700;font-size:.9rem;margin-bottom:3px;line-height:1.3;}
+.ticket-date{font-size:.76rem;color:var(--muted);margin-bottom:7px;line-height:1.4;}
+.ticket-tags{display:flex;gap:5px;flex-wrap:wrap;}
+.ticket-tag{font-size:.67rem;padding:3px 8px;border-radius:20px;font-weight:500;}
+.ticket-tag.confirmed{background:#d5f5e3;color:#1e8449;}.ticket-tag.pending{background:#fef9e7;color:#b7770d;}.ticket-tag.info{background:#eaf2ff;color:var(--blue);}
+.ticket-warning{font-size:.74rem;color:#e74c3c;margin-top:8px;line-height:1.4;}
+.ticket-note{font-size:.74rem;color:var(--muted);margin-top:8px;line-height:1.4;}
+.ticket-section-title{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--dark);margin:22px 0 12px;padding-bottom:6px;border-bottom:2px solid var(--accent);}
+.ticket-section-title:first-of-type{margin-top:0;}
+.maps-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px;}
+@media(max-width:400px){.maps-grid{grid-template-columns:1fr;}}
+.map-card{background:white;border-radius:10px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:8px;}
+.map-icon{font-size:1.6rem;}.map-title{font-weight:700;font-size:.9rem;}.map-desc{font-size:.76rem;color:var(--muted);line-height:1.4;flex:1;}
+.map-btn{display:block;background:var(--blue);color:white;text-decoration:none;padding:8px 12px;border-radius:8px;font-size:.76rem;font-weight:600;text-align:center;}
+.flex-item{display:flex;flex-direction:column;gap:4px;padding:10px 0;border-bottom:1px solid #f5f5f5;font-size:.85rem;}
+.flex-item:last-child{border-bottom:none;}
+.flex-date{font-weight:700;color:var(--dark);font-size:.8rem;}
+.flex-window{color:var(--muted);line-height:1.5;}
+.flex-note{font-size:.75rem;color:#999;font-style:italic;}
+.arrival-city{margin-bottom:28px;}
+.arrival-city-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+.arrival-city-title.madrid{color:var(--red);}.arrival-city-title.valencia{color:#d68910;}.arrival-city-title.barcelona{color:var(--blue);}
+.arrival-block{background:white;border-radius:10px;padding:14px;margin-bottom:10px;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+.arrival-block h4{font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:8px;}
+.arrival-block h4.metro{color:var(--blue);}.arrival-block h4.safety{color:#e74c3c;}.arrival-block h4.tips{color:var(--green);}
+.arrival-block ul{padding-left:0;list-style:none;}
+.arrival-block li{font-size:.82rem;color:var(--text);padding:5px 0;border-bottom:1px solid #f5f5f5;line-height:1.5;}
+.arrival-block li:last-child{border-bottom:none;}
+.arrival-block li::before{content:"→ ";color:var(--muted);}
+.source-link{font-size:.72rem;color:var(--blue);text-decoration:none;display:inline-block;margin-top:8px;padding:4px 0;}
+.activity-city{margin-bottom:28px;}
+.activity-city-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--accent);}
+.activity-city-title.madrid{color:var(--red);}.activity-city-title.valencia{color:#d68910;}.activity-city-title.barcelona{color:var(--blue);}
+.activity-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+@media(min-width:500px){.activity-grid{grid-template-columns:1fr 1fr;}}
+.activity-card{background:white;border-radius:10px;padding:14px;box-shadow:0 2px 6px rgba(0,0,0,.04);display:flex;flex-direction:column;gap:6px;}
+.act-header{display:flex;align-items:flex-start;gap:8px;}
+.act-icon{font-size:1.3rem;flex-shrink:0;margin-top:1px;}
+.act-name{font-weight:700;font-size:.88rem;flex:1;line-height:1.3;}
+.act-badge{font-size:.64rem;padding:2px 7px;border-radius:20px;font-weight:600;white-space:nowrap;flex-shrink:0;}
+.badge-quick{background:#e8f5e9;color:#1e8449;}.badge-half{background:#e3f2fd;color:var(--blue);}.badge-full{background:#fef9e7;color:#b7770d;}.badge-rainy{background:#f3e5f5;color:#7b1fa2;}.badge-event{background:#fce4ec;color:#c62828;}
+.act-desc{font-size:.78rem;color:var(--muted);line-height:1.5;}
+.act-link{font-size:.72rem;color:var(--blue);text-decoration:none;padding:2px 0;}
+.badge-legend{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;}
+.badge-legend span{font-size:.68rem;padding:3px 8px;border-radius:20px;font-weight:600;}
+
+.food-panel-wrap{background:var(--bg);color:var(--ftext);font-family:'Inter',sans-serif;min-height:calc(100vh - 90px);}
+.food-inner{max-width:1100px;margin:0 auto;padding:0 0 4rem;}
+
+.cheat-hero{text-align:center;padding:2.5rem 1rem 2rem;border-bottom:1px solid var(--border);margin-bottom:2.5rem;}
+.cheat-hero .eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;}
+.cheat-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:600;margin-bottom:.4rem;color:var(--ftext);}
+.cheat-hero p{color:var(--fmuted);font-size:.85rem;max-width:520px;margin:0 auto;}
+.timing-banner{background:rgba(200,146,58,.1);border:1px solid rgba(200,146,58,.25);border-radius:6px;padding:1rem 1.4rem;margin-bottom:2.5rem;display:flex;gap:1rem;align-items:flex-start;}
+.timing-banner .tb-icon{font-size:1.2rem;flex-shrink:0;margin-top:1px;}
+.timing-banner h4{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:.25rem;}
+.timing-banner p{font-size:.82rem;color:rgba(237,230,216,.75);line-height:1.6;}
+.city-sheet{margin-bottom:3rem;padding:0 1.5rem;}
+.city-sheet-header{display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
+.city-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.dot-vlc{background:var(--VLC);box-shadow:0 0 10px var(--VLC);}
+.dot-mad{background:var(--MAD);box-shadow:0 0 10px var(--MAD);}
+.dot-tol{background:var(--TOL);box-shadow:0 0 10px var(--TOL);}
+.dot-bcn{background:var(--BCN);box-shadow:0 0 10px var(--BCN);}
+.city-sheet-header h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:600;color:var(--ftext);}
+.city-sheet-header .dates{font-size:.75rem;color:var(--fmuted);margin-left:auto;}
+.nights-grid{display:flex;flex-direction:column;gap:.6rem;margin-bottom:2rem;}
+.night-row{background:var(--card);border:1px solid var(--border);border-radius:5px;padding:.9rem 1.1rem;display:grid;grid-template-columns:100px 1fr auto;gap:.75rem;align-items:center;transition:background .15s;}
+.night-row:hover{background:var(--card2);}
+.night-label{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--fmuted);}
+.night-date{font-size:.68rem;color:var(--fmuted);}
+.night-pick{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ftext);}
+.night-verdict{font-size:.75rem;font-style:italic;color:var(--gold-hi);margin-top:.1rem;}
+.night-meta{font-size:.73rem;color:var(--fmuted);margin-top:.2rem;line-height:1.5;}
+.night-badge{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;white-space:nowrap;}
+.nbadge{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .55rem;border-radius:3px;font-weight:600;}
+.nb-reserve{background:rgba(184,64,64,.2);color:#e87878;}
+.nb-easy{background:rgba(58,138,90,.2);color:#78c890;}
+.nb-warn{background:rgba(184,120,48,.2);color:#e8a858;}
+.nb-price{background:rgba(200,146,58,.15);color:var(--gold-hi);}
+.night-link{font-size:.72rem;color:var(--gold);margin-top:.2rem;display:inline-block;}
+.night-row.constrained{border-left:3px solid var(--amber);}
+.night-row.free{border-left:3px solid var(--fgreen);}
+.night-row.special{border-left:3px solid var(--gold);}
+.section-label-sm{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fmuted);margin-bottom:.75rem;margin-top:1.5rem;}
+.quick-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem;margin-bottom:1.5rem;}
+.quick-card{background:var(--card);border:1px solid var(--border);border-radius:4px;padding:.75rem .9rem;}
+.qc-name{font-weight:600;font-size:.85rem;margin-bottom:.15rem;color:var(--ftext);}
+.qc-sub{font-size:.73rem;color:var(--fmuted);}
+.qc-tag{font-size:.62rem;color:var(--gold-hi);margin-top:.25rem;font-style:italic;}
+
+.guide-controls{position:sticky;top:45px;z-index:100;background:rgba(12,10,8,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:.8rem 1.5rem;}
+.guide-controls-inner{max-width:1400px;margin:0 auto;display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;}
+.search-wrap{position:relative;flex:1;min-width:160px;}
+.search-icon{position:absolute;left:.7rem;top:50%;transform:translateY(-50%);color:var(--fmuted);font-size:.8rem;}
+.search-input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.45rem .7rem .45rem 2rem;color:var(--ftext);font-family:'Inter',sans-serif;font-size:.82rem;outline:none;transition:border-color .2s;}
+.search-input:focus{border-color:var(--gold);}
+.search-input::placeholder{color:var(--fmuted);}
+.filter-group{display:flex;gap:.35rem;flex-wrap:wrap;align-items:center;}
+.fg-label{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--fmuted);white-space:nowrap;}
+.pill{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:.28rem .7rem;font-size:.72rem;font-family:'Inter',sans-serif;color:var(--fmuted);cursor:pointer;transition:all .15s;white-space:nowrap;}
+.pill:hover{border-color:var(--border-hi);color:var(--ftext);}
+.pill.active{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:600;}
+.pill.pv.active{background:var(--VLC);border-color:var(--VLC);color:#fff;}
+.pill.pm.active{background:var(--MAD);border-color:var(--MAD);color:#fff;}
+.pill.pb.active{background:var(--BCN);border-color:var(--BCN);color:#fff;}
+.res-count{font-size:.72rem;color:var(--fmuted);white-space:nowrap;margin-left:auto;}
+.guide-main{max-width:1400px;margin:0 auto;padding:1.5rem 1.5rem 4rem;}
+.gcity-section{margin-bottom:.5rem;}
+.gcity-section.c-hidden{display:none;}
+.city-divider{display:flex;align-items:center;gap:.75rem;padding:1.5rem 0 1rem;}
+.city-divider h2{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:600;color:var(--ftext);}
+.divider-line{flex:1;height:1px;background:var(--border);}
+.divider-count{font-size:.7rem;color:var(--fmuted);letter-spacing:.1em;}
+.coffee-toggle{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:.6rem 1rem;font-size:.8rem;color:var(--fmuted);cursor:pointer;display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem;transition:all .2s;width:100%;text-align:left;}
+.coffee-toggle:hover{border-color:var(--border-hi);color:var(--ftext);}
+.coffee-hidden .venue-card:not(.coffee-top){display:none;}
+.venue-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:5px;overflow:hidden;margin-bottom:1.5rem;}
+.venue-card{background:var(--card);padding:1rem 1.15rem;transition:background .15s;display:flex;flex-direction:column;gap:.55rem;position:relative;}
+.venue-card:hover{background:var(--card2);}
+.venue-card.v-hidden{display:none;}
+.venue-card.is-gem{border-top:2px solid var(--gold);}
+.gem-label{position:absolute;top:.5rem;right:.7rem;font-size:.55rem;letter-spacing:.15em;color:var(--gold);font-weight:700;text-transform:uppercase;}
+.verdict-line{font-size:.75rem;font-style:italic;color:var(--gold-hi);padding:.35rem .6rem;background:rgba(200,146,58,.08);border-left:2px solid var(--gold);border-radius:0 3px 3px 0;}
+.card-top{display:flex;gap:.55rem;align-items:flex-start;}
+.cat-icon{width:26px;height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.85rem;flex-shrink:0;margin-top:1px;}
+.c-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;line-height:1.25;margin-bottom:.12rem;color:var(--ftext);}
+.c-tagline{font-size:.72rem;color:var(--fmuted);font-style:italic;}
+.card-badges{display:flex;gap:.3rem;flex-wrap:wrap;align-items:center;}
+.badge{font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;padding:.16rem .48rem;border-radius:3px;font-weight:600;}
+.bv{background:rgba(212,71,42,.18);color:#e87060;}.bm{background:rgba(58,107,181,.18);color:#7aabe8;}
+.bt{background:rgba(107,138,58,.18);color:#aac870;}.bb{background:rgba(155,58,181,.18);color:#cc80e8;}
+.bmi{background:rgba(200,146,58,.18);color:var(--gold-hi);}
+.brs{background:rgba(180,60,60,.15);color:#d87070;}.bwi{background:rgba(58,130,80,.15);color:#70c880;}
+.card-desc{font-size:.8rem;color:rgba(237,230,216,.78);line-height:1.55;}
+.card-meta{display:grid;grid-template-columns:1fr 1fr;gap:.28rem .7rem;font-size:.72rem;}
+.mi{display:flex;gap:.35rem;align-items:flex-start;color:var(--fmuted);}
+.mk{font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--faint);white-space:nowrap;min-width:42px;margin-top:1px;}
+.mv{color:rgba(237,230,216,.68);}.mv.price{color:var(--gold-hi);}
+.cat-tag{display:inline-flex;align-items:center;gap:.25rem;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:.18rem .5rem;border-radius:3px;font-weight:500;align-self:flex-start;}
+.reserve-tier{display:flex;align-items:center;gap:.35rem;font-size:.72rem;margin-top:.1rem;}
+.rt-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.rt-easy .rt-dot{background:var(--fgreen);}.rt-warn .rt-dot{background:var(--amber);}.rt-book .rt-dot{background:var(--fred);}
+.rt-easy{color:#70c880;}.rt-warn{color:#d8a060;}.rt-book{color:#d87070;}
+.map-link{font-size:.7rem;color:var(--gold);margin-top:.1rem;display:inline-block;}
+
+.picker-outer{min-height:calc(100vh - 90px);display:flex;align-items:center;justify-content:center;padding:2rem 1rem;background:var(--bg);}
+.picker-wrap{width:100%;max-width:580px;}
+.picker-intro{text-align:center;}
+.picker-intro .eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+.picker-intro h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,5vw,2.6rem);font-weight:600;line-height:1.2;margin-bottom:.75rem;color:var(--ftext);}
+.picker-intro p{color:var(--fmuted);font-size:.88rem;max-width:400px;margin:0 auto 2rem;}
+.btn-primary{background:var(--gold);color:var(--bg);border:none;padding:.85rem 2.2rem;font-family:'Inter',sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;border-radius:3px;transition:all .2s;}
+.btn-primary:hover{background:var(--gold-hi);}
+.picker-q{display:none;animation:fadeIn .3s ease;}
+.picker-q.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.q-num{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.q-text{font-family:'Playfair Display',serif;font-size:clamp(1.2rem,3.5vw,1.6rem);font-weight:600;line-height:1.3;margin-bottom:.5rem;color:var(--ftext);}
+.q-sub{font-size:.82rem;color:var(--fmuted);margin-bottom:1.5rem;line-height:1.55;}
+.q-options{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem;}
+.q-opt{background:var(--card);border:1.5px solid var(--border);border-radius:4px;padding:.85rem 1.1rem;cursor:pointer;transition:all .18s;text-align:left;width:100%;font-family:'Inter',sans-serif;color:var(--ftext);}
+.q-opt:hover{background:var(--card2);border-color:var(--gold);}
+.q-opt.selected{background:rgba(200,146,58,.15);border-color:var(--gold);}
+.q-opt-label{font-weight:500;font-size:.88rem;margin-bottom:.1rem;}
+.q-opt-sub{font-size:.74rem;color:var(--fmuted);}
+.q-opt.selected .q-opt-label{color:var(--gold-hi);}
+.q-nav{display:flex;gap:.75rem;align-items:center;}
+.btn-back{background:transparent;border:1.5px solid var(--border);color:var(--fmuted);padding:.65rem 1.4rem;font-family:'Inter',sans-serif;font-size:.82rem;cursor:pointer;border-radius:3px;transition:all .2s;}
+.btn-back:hover{border-color:var(--border-hi);color:var(--ftext);}
+.btn-next{background:var(--gold);color:var(--bg);border:none;padding:.65rem 1.8rem;font-family:'Inter',sans-serif;font-size:.85rem;font-weight:600;cursor:pointer;border-radius:3px;transition:all .2s;}
+.btn-next:hover{background:var(--gold-hi);}
+.btn-next:disabled{background:var(--faint);color:var(--fmuted);cursor:not-allowed;}
+.q-progress{display:flex;gap:4px;margin-bottom:1.5rem;}
+.q-prog-dot{height:3px;flex:1;border-radius:2px;background:var(--faint);transition:background .3s;}
+.q-prog-dot.done{background:var(--gold);}.q-prog-dot.active{background:var(--gold-hi);}
+.picker-result{display:none;animation:fadeIn .4s ease;}
+.picker-result.active{display:block;}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.result-header{background:linear-gradient(135deg,rgba(200,146,58,.2),rgba(200,146,58,.05));border-bottom:1px solid var(--border);padding:1.5rem 1.5rem 1.2rem;position:relative;}
+.result-verdict{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.result-name{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;line-height:1.2;margin-bottom:.3rem;color:var(--ftext);}
+.result-tagline{font-size:.85rem;color:var(--fmuted);font-style:italic;}
+.result-city-badge{position:absolute;top:1rem;right:1rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.2rem .6rem;border-radius:3px;font-weight:600;}
+.result-body{padding:1.2rem 1.5rem;}
+.result-why{font-size:.85rem;line-height:1.6;color:var(--ftext);margin-bottom:1.2rem;padding:.75rem 1rem;background:rgba(200,146,58,.07);border-left:2px solid var(--gold);border-radius:0 4px 4px 0;}
+.result-details{display:grid;grid-template-columns:1fr 1fr;gap:.5rem 1rem;font-size:.78rem;margin-bottom:1.2rem;}
+.rd-item{display:flex;flex-direction:column;gap:.1rem;}
+.rd-key{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fmuted);}
+.rd-val{color:var(--ftext);}.rd-val.price{color:var(--gold-hi);}
+.result-actions{display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;}
+.btn-maps{background:var(--gold);color:var(--bg);border:none;padding:.65rem 1.4rem;font-family:'Inter',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer;border-radius:3px;text-decoration:none;display:inline-block;}
+.btn-retry{background:transparent;border:1.5px solid var(--border);color:var(--fmuted);padding:.65rem 1.4rem;font-family:'Inter',sans-serif;font-size:.82rem;cursor:pointer;border-radius:3px;transition:all .2s;}
+.btn-retry:hover{border-color:var(--border-hi);color:var(--ftext);}
+.btn-diff{background:transparent;border:1.5px solid rgba(200,146,58,.3);color:var(--gold);padding:.65rem 1.4rem;font-family:'Inter',sans-serif;font-size:.82rem;cursor:pointer;border-radius:3px;transition:all .2s;}
+.btn-diff:hover{border-color:var(--gold);background:rgba(200,146,58,.08);}
+
+footer{background:var(--dark);color:rgba(255,255,255,.5);text-align:center;padding:24px 16px;font-size:.75rem;}
+footer span{color:var(--yellow);}
+@media(max-width:480px){.day-tags{display:none;}.tl-time{min-width:42px;font-size:.62rem;}.section-card{padding:16px 14px;}.night-row{grid-template-columns:1fr;}.night-badge{flex-direction:row;flex-wrap:wrap;}.venue-grid{grid-template-columns:1fr;}.result-details{grid-template-columns:1fr;}.card-meta{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="flag">🇪🇸</div>
+  <h1>Spain <span>2026</span></h1>
+  <p class="subtitle">April 28 – May 9 &nbsp;·&nbsp; 12 Days</p>
+  <div class="hero-cities">
+    <span class="city-pill">🏙️ Madrid</span>
+    <span class="city-pill">🥘 Valencia</span>
+    <span class="city-pill">🏖️ Barcelona</span>
+  </div>
+</div>
+
+<div class="tab-bar-wrap">
+  <div class="tab-bar">
+    <button class="tab-btn active" data-tab="itinerary">🗺 Itinerary</button>
+    <button class="tab-btn" data-tab="tickets">🎟 Tickets</button>
+    <button class="tab-btn" data-tab="checklist">📋 Bookings</button>
+    <button class="tab-btn" data-tab="packing">🧳 Packing</button>
+    <button class="tab-btn" data-tab="maps">📍 Maps</button>
+    <button class="tab-btn" data-tab="arrival">🛬 Arrival</button>
+    <button class="tab-btn" data-tab="activities">🎉 Activities</button>
+    <span class="tab-divider">|</span>
+    <button class="tab-btn food-tab" data-tab="cheat">🗺 Meal Cheat Sheet</button>
+    <button class="tab-btn food-tab" data-tab="guide">📖 Food Guide</button>
+    <button class="tab-btn food-tab" data-tab="picker">🎲 Meal Picker</button>
+    <button class="tab-btn" data-tab="windows">🗓 Free Time</button>
+  </div>
+</div>
+
+<!-- ===== ITINERARY ===== -->
+<div id="tab-itinerary" class="tab-panel active"><main>
+  <div class="predeparture">
+    <div class="city-header"><div class="city-icon">✈️</div><h2 style="color:#27ae60;font-family:'Playfair Display',serif;">Departure</h2></div>
+    <div class="day-card predeparture">
+      <div class="day-header"><div class="day-date">Tue 4/28</div><div class="day-title">Fly to Madrid ✈️</div><div class="day-tags"><span class="tag tag-booked">JFK→MAD</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Head to JFK Airport</strong><p>Allow extra time for international check-in &amp; security</p></div></li>
+        <li><div class="tl-time">8:40 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>✈️ Depart JFK → Madrid</strong></div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="madrid">
+    <div class="city-header"><div class="city-icon">🏟️</div><h2>Madrid</h2></div>
+    <div class="day-card madrid">
+      <div class="day-header"><div class="day-date">Wed 4/29</div><div class="day-title">Arrival + Madrid Open 🎾</div><div class="day-tags"><span class="tag tag-booked">🎾 Tennis</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">Afternoon</div><div class="tl-dot"></div><div class="tl-content"><strong>Arrive Madrid</strong><p>Transfer to hotel, check in, rest &amp; refresh</p></div></li>
+        <li><div class="tl-time">Optional</div><div class="tl-dot"></div><div class="tl-content"><strong>Vintage shopping in Malasaña</strong></div></li>
+        <li><div class="tl-time">~5:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Early dinner near hotel</strong></div></li>
+        <li><div class="tl-time">7:20 PM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>🎾 Mutua Madrid Open – QF</strong><p>Caja Mágica · 8:00 PM · Sector A9 Este · Row 3 · Seats 7 &amp; 9</p></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card madrid">
+      <div class="day-header"><div class="day-date">Thu 4/30</div><div class="day-title">Reina Sofía &amp; Flamenco</div><div class="day-tags"><span class="tag tag-booked">🎭 Flamenco</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">8:30 AM</div><div class="tl-dot"></div><div class="tl-content"><strong>Breakfast</strong></div></li>
+        <li><div class="tl-time">10:00 AM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>Reina Sofía Museum</strong><p>Guernica + permanent collection</p></div></li>
+        <li><div class="tl-time">1:00 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Lunch near Retiro Park</strong></div></li>
+        <li><div class="tl-time">2:00 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Free after lunch → 6:30 PM</strong><p>Malasaña shopping · Retiro Park · Royal Palace</p></div></li>
+        <li><div class="tl-time">7:00 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Quick tapas dinner</strong><p>Must finish by ~8:30 PM</p></div></li>
+        <li><div class="tl-time">9:00 PM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>🎭 Flamenco Show + Drink</strong><p>Taberna Flamenca El Cortijo · #333560582</p></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card madrid">
+      <div class="day-header"><div class="day-date">Fri 5/1</div><div class="day-title">Toledo Day Trip 🏰</div><div class="day-tags"><span class="tag tag-flex">Labor Day</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">10:15 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train to Toledo</strong><p>Depart: Madrid Puerta de Atocha-Almudena Grandes · Arrive: Toledo station · ~33 min</p></div></li>
+        <li><div class="tl-time">~11:15</div><div class="tl-dot"></div><div class="tl-content"><strong>Arrive Toledo — explore freely</strong><p>Toledo Cathedral · Santo Tomé Church · Jewish Quarter · Alcázar closed (Labor Day)</p></div></li>
+        <li><div class="tl-time">1:30 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Lunch in Toledo</strong><p>Carcamusas or mazapán pastries</p></div></li>
+        <li><div class="tl-time">4:25 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train back to Madrid</strong></div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Labor Day wandering</strong><p>La Latina · Malasaña · tapas on Calle Cava Baja</p></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card madrid">
+      <div class="day-header"><div class="day-date">Sat 5/2</div><div class="day-title">Madrid → Valencia</div><div class="day-tags"><span class="tag tag-tbd">⚽ TBD</span></div><div class="chevron">▼</div></div>
+      <div class="day-body">
+        <div class="scenario a"><h4>🟢 Match Sunday — train at 2:30 PM</h4><ul class="timeline">
+          <li><div class="tl-time">Late AM</div><div class="tl-dot"></div><div class="tl-content"><strong>🛴 Madrid Segway Tour</strong><p>Sol · Plaza Mayor · La Latina</p></div></li>
+          <li><div class="tl-time">2:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong><p>Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla · arr. ~5:45 PM</p></div></li>
+          <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Check in, explore El Carmen, dinner</strong></div></li>
+        </ul></div>
+        <div class="scenario b"><h4>🔴 Match Saturday — train at ~10:00 AM</h4><ul class="timeline">
+          <li><div class="tl-time">~10 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Valencia</strong><p>Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla</p></div></li>
+          <li><div class="tl-time">Afternoon</div><div class="tl-dot"></div><div class="tl-content"><strong>Check in, explore Old Town</strong></div></li>
+          <li><div class="tl-time">Evening</div><div class="tl-dot booked"></div><div class="tl-content"><strong>⚽ Valencia CF vs. Atlético</strong><p>Sector 256 · Row 14 · Seats 53 &amp; 54</p></div></li>
+        </ul></div>
+      </div>
+    </div>
+  </div>
+  <div class="valencia">
+    <div class="city-header"><div class="city-icon">🥘</div><h2>Valencia</h2></div>
+    <div class="day-card valencia">
+      <div class="day-header"><div class="day-date">Sun 5/3</div><div class="day-title">Beach &amp; Pool Day 🏖️</div><div class="day-tags"><span class="tag tag-tbd">⚽ TBD</span></div><div class="chevron">▼</div></div>
+      <div class="day-body">
+        <div class="scenario a"><h4>🟢 If match was Saturday</h4><p style="font-size:.82rem;color:var(--muted)">Beach, pool, relaxed lunch · Recharge after the match</p></div>
+        <div class="scenario b" style="margin-top:10px"><h4>🔴 If match is Sunday</h4><ul class="timeline">
+          <li><div class="tl-time">Morning</div><div class="tl-dot"></div><div class="tl-content"><strong>Leisure — beach or pool</strong></div></li>
+          <li><div class="tl-time">Match</div><div class="tl-dot booked"></div><div class="tl-content"><strong>⚽ Valencia CF vs. Atlético · Sector 256 · Row 14 · Seats 53 &amp; 54</strong></div></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="day-card valencia">
+      <div class="day-header"><div class="day-date">Mon 5/4</div><div class="day-title">Market, Paella &amp; Science Park</div><div class="day-tags"><span class="tag tag-booked">🥘 Booked</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">8:30 AM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>🛒 Mercado Central</strong><p>Arrive early — fresh &amp; uncrowded</p></div></li>
+        <li><div class="tl-time">10:00 AM</div><div class="tl-dot"></div><div class="tl-content"><strong>Wander Old Town / El Carmen</strong></div></li>
+        <li><div class="tl-time">11:00 AM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>🥘 Paella Cooking Class</strong><p>Valencia Club Cocina · Until 2:30 PM · Order #45291</p></div></li>
+        <li><div class="tl-time">3:00 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>☀️ City of Arts &amp; Sciences stroll</strong></div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Light tapas or sunset at the beach</strong></div></li>
+      </ul></div>
+    </div>
+  </div>
+  <div class="barcelona">
+    <div class="city-header"><div class="city-icon">🏖️</div><h2>Barcelona</h2></div>
+    <div class="day-card barcelona">
+      <div class="day-header"><div class="day-date">Tue 5/5</div><div class="day-title">Valencia → Barcelona</div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">10:40 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Taxi to Valencia Estació del Nord</strong><p>(Estación del Norte) · Art Nouveau station in the city centre</p></div></li>
+        <li><div class="tl-time">11:25 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Train → Barcelona Sants</strong><p>Depart: Valencia Estació del Nord · Euromed trains using Nord through June 2026</p></div></li>
+        <li><div class="tl-time">2:50 PM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>Arrive → Borneta Hotel</strong></div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Gothic Quarter &amp; El Born stroll · Tapas dinner</strong></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card barcelona">
+      <div class="day-header"><div class="day-date">Wed 5/6</div><div class="day-title">Sagrada Família &amp; Bike Ride</div><div class="day-tags"><span class="tag tag-booked">⛪ 9 AM</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">9:00 AM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>⛪ Sagrada Família ✅</strong></div></li>
+        <li><div class="tl-time">12:30 PM</div><div class="tl-dot"></div><div class="tl-content"><strong>Lunch near Barceloneta</strong></div></li>
+        <li><div class="tl-time">Afternoon</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>🚲 Coastal Bike Ride</strong>
+          <div class="bike-route"><h4>Route — NE along coast, loop back</h4>
+            <div class="bike-stop"><div class="bike-num">1</div><div><strong>Barceloneta Beach</strong> — pick up rentals</div></div>
+            <div class="bike-stop"><div class="bike-num">2</div><div><strong>Port Olímpic</strong> — Gehry fish sculpture</div></div>
+            <div class="bike-stop"><div class="bike-num">3</div><div><strong>Bogatell &amp; Mar Bella</strong> — quieter beaches</div></div>
+            <div class="bike-stop"><div class="bike-num">4</div><div><strong>El Poblenou waterfront</strong> — turn around</div></div>
+            <div class="bike-stop"><div class="bike-num">5</div><div><strong>Parc de la Ciutadella</strong> — waterfall &amp; gardens</div></div>
+            <div class="bike-stop"><div class="bike-num">6</div><div><strong>Finish near Borneta Hotel</strong></div></div>
+          </div>
+        </div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Tapas at El Xampanyet or Cervecería Catalana</strong></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card barcelona">
+      <div class="day-header"><div class="day-date">Thu 5/7</div><div class="day-title">Park Güell &amp; Casa Batlló</div><div class="day-tags"><span class="tag tag-booked">🌿 9:30</span><span class="tag tag-tbd">🏠 TBD</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">9:30 AM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>🌿 Park Güell ✅</strong><p>Booking #8075049</p></div></li>
+        <li><div class="tl-time">Midday</div><div class="tl-dot"></div><div class="tl-content"><strong>Lunch in Gràcia neighborhood</strong></div></li>
+        <li><div class="tl-time">~2:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>🏠 Casa Batlló (TBD)</strong></div></li>
+        <li><div class="tl-time">Optional</div><div class="tl-dot"></div><div class="tl-content"><strong>La Pedrera / Casa Milà</strong></div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot"></div><div class="tl-content"><strong>Barceloneta · Montjuïc · or rooftop drinks</strong></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card barcelona">
+      <div class="day-header"><div class="day-date">Fri 5/8</div><div class="day-title">Farewell — Boqueria &amp; La Rambla</div><div class="day-tags"><span class="tag tag-flex">Flex Day</span></div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">9:00 AM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>🥬 Mercat de la Boqueria</strong></div></li>
+        <li><div class="tl-time">Mid-AM</div><div class="tl-dot"></div><div class="tl-content"><strong>Stroll La Rambla</strong></div></li>
+        <li><div class="tl-time">~11 AM+</div><div class="tl-dot"></div><div class="tl-content"><strong>Free afternoon</strong><p>🎨 Picasso Museum · 🛍️ El Born · 🚡 Montjuïc · ☀️ Beach</p></div></li>
+        <li><div class="tl-time">Evening</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>🍷 Farewell dinner in Barcelona</strong></div></li>
+      </ul></div>
+    </div>
+    <div class="day-card departure">
+      <div class="day-header"><div class="day-date">Sat 5/9</div><div class="day-title">✈️ Return Home to NYC</div><div class="chevron">▼</div></div>
+      <div class="day-body"><ul class="timeline">
+        <li><div class="tl-time">~9:30 AM</div><div class="tl-dot"></div><div class="tl-content"><strong>Check out → Barcelona El Prat Airport</strong></div></li>
+        <li><div class="tl-time">1:30 PM</div><div class="tl-dot highlight"></div><div class="tl-content"><strong>Flight departs Barcelona</strong></div></li>
+        <li><div class="tl-time">4:10 PM</div><div class="tl-dot booked"></div><div class="tl-content"><strong>Arrive JFK 🗽</strong></div></li>
+      </ul></div>
+    </div>
+  </div>
+</main></div>
+
+<!-- ===== TICKETS ===== -->
+<div id="tab-tickets" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>🎟 Tickets</h2>
+    <div class="ticket-section-title">🎭 Events</div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon tennis">🎾</div><div class="ticket-info"><div class="ticket-title">Mutua Madrid Open – Quarterfinals</div><div class="ticket-date">Wed Apr 29 · 8:00 PM · Caja Mágica, Madrid</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Sector A9 Este · Row 3 · Seats 7 &amp; 9</span><span class="ticket-tag info">€95 each</span></div><p class="ticket-warning">⚠️ Photo ID required · One-time entry · Ref: JXWE7C3RNW2J</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon flamenco">🎭</div><div class="ticket-info"><div class="ticket-title">Flamenco Show + Drink – Taberna Flamenca El Cortijo</div><div class="ticket-date">Thu Apr 30 · 9:00 PM · Madrid</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Booking #333560582</span><span class="ticket-tag info">Includes a drink 🥂</span></div><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon soccer">⚽</div><div class="ticket-info"><div class="ticket-title">Valencia CF vs. Atlético de Madrid</div><div class="ticket-date">Date TBD (Sat or Sun) · Camp de Mestalla, Valencia</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Sector 256 · Row 14 · Seats 53 &amp; 54</span><span class="ticket-tag info">€117.30 each</span><span class="ticket-tag pending">⏳ Date TBD</span></div><p class="ticket-warning">⚠️ Gates open 90 min early · Bring ID · Jack: A65291876 · Helena: A08690926</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon cooking">🥘</div><div class="ticket-info"><div class="ticket-title">Paella Cooking Class – Valencia Club Cocina</div><div class="ticket-date">Mon May 4 · 11:00 AM – 2:30 PM · Valencia</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Confirmed</span><span class="ticket-tag info">Order #45291 · 2 Adults · €124</span></div><p class="ticket-note">Booking confirmation · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon park">🌿</div><div class="ticket-info"><div class="ticket-title">Park Güell – Timed Entry</div><div class="ticket-date">Thu May 7 · 9:30 AM · Barcelona</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ ×2</span><span class="ticket-tag info">Booking #8075049 · €18 each</span></div><p class="ticket-note">Entry valid up to 30 min after slot · No re-entry · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon pending">⛪</div><div class="ticket-info"><div class="ticket-title">Sagrada Família</div><div class="ticket-date">Wed May 6 · 9:00 AM · Barcelona</div><div class="ticket-tags"><span class="ticket-tag pending">⏳ Tickets not yet received</span></div><p class="ticket-note">Check email closer to trip — add to Apple Wallet &amp; GitHub when received</p></div></div></div>
+    <div class="ticket-section-title">🏨 Hotels</div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon hotel">🏨</div><div class="ticket-info"><div class="ticket-title">All Hotels – Under Jack Briamonte</div><div class="ticket-date">Madrid · Valencia · Barcelona</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ All Confirmed</span></div><p class="ticket-note">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</p></div></div></div>
+    <div class="ticket-section-title">🚆 Trains</div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Madrid ↔ Toledo ↔ Madrid</div><div class="ticket-date">Friday, May 1 · Day trip</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span></div><p class="ticket-note">Depart: Madrid Puerta de Atocha-Almudena Grandes · Arrive: Toledo station</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Madrid → Valencia</div><div class="ticket-date">Saturday, May 2</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span><span class="ticket-tag info">2:30 PM if match Sun · ~10 AM if match Sat</span></div><p class="ticket-note">Depart: Madrid-Chamartín-Clara Campoamor · Arrive: Valencia Joaquín Sorolla</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+    <div class="ticket-card"><div class="ticket-top"><div class="ticket-icon train">🚆</div><div class="ticket-info"><div class="ticket-title">Valencia → Barcelona</div><div class="ticket-date">Tuesday, May 5 · 11:25 AM · Valencia Estació del Nord → Barcelona Sants</div><div class="ticket-tags"><span class="ticket-tag confirmed">✅ Booked</span><span class="ticket-tag info">Arr. 2:50 PM</span></div><p class="ticket-warning">⚠️ Euromed trains using Nord station through June 2026</p><p class="ticket-warning">📱 In Apple Wallet · 📄 PDF saved in GitHub</p></div></div></div>
+  </div>
+</main></div>
+
+<!-- ===== BOOKINGS ===== -->
+<div id="tab-checklist" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>📋 Bookings &amp; Reservations</h2>
+    <h3>🎭 Events</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Mutua Madrid Open – Quarterfinals (×2)<span class="check-detail">Wed Apr 29 · 8 PM · A9 Este, Row 3, Seats 7 &amp; 9 · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Flamenco Show – Taberna Flamenca El Cortijo (×2)<span class="check-detail">Thu Apr 30 · 9 PM · #333560582 · Drink included · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Valencia CF vs. Atlético de Madrid (×2)<span class="check-detail">Date TBD · Sector 256, Row 14, Seats 53 &amp; 54 · 📱 Apple Wallet</span></div></div>
+    <h3>🏛️ Museums</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Reina Sofía Museum<span class="check-detail">Thu Apr 30 · Scheduled</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Sagrada Família – 9:00 AM<span class="check-detail">Wed May 6 · Booked — tickets pending delivery</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Picasso Museum<span class="check-detail">Fri May 8 · Optional · Book ahead if chosen</span></div></div>
+    <h3>🗺️ Sightseeing</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Park Güell – 9:30 AM (×2)<span class="check-detail">Thu May 7 · Booking #8075049</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Casa Batlló<span class="check-detail">Thu May 7 · ~2:30–3 PM · TBD — book ASAP if going</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">La Pedrera / Casa Milà (optional)<span class="check-detail">Thu May 7 · Only if energy allows after Casa Batlló</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Madrid Segway Tour<span class="check-detail">Sat May 2 morning · Optional — confirm after soccer match date</span></div></div>
+    <h3>🍽️ Dining</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">Paella Cooking Class – Valencia Club Cocina<span class="check-detail">Mon May 4 · 11:00 AM · Order #45291 · 2 Adults</span></div></div>
+    <div class="check-item"><span>❌</span><div class="check-label">Dinner reservations<span class="check-detail">TBD — to be added</span></div></div>
+    <h3>🚆 Travel &amp; Lodging</h3>
+    <div class="check-item"><span>✅</span><div class="check-label">All Hotels — confirmed under Jack Briamonte<span class="check-detail">Madrid: Apr 29–May 2 · Valencia: May 2–5 · Barcelona (Borneta): May 5–9</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Madrid ↔ Toledo ↔ Madrid<span class="check-detail">Fri May 1 · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Madrid → Valencia<span class="check-detail">Sat May 2 · 📱 Apple Wallet</span></div></div>
+    <div class="check-item"><span>✅</span><div class="check-label">Train: Valencia → Barcelona<span class="check-detail">Tue May 5 · 11:25 AM · 📱 Apple Wallet</span></div></div>
+  </div>
+</main></div>
+
+<!-- ===== PACKING ===== -->
+<div id="tab-packing" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>🧳 Packing List</h2>
+    <h3>✈️ Travel Essentials</h3>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Passport (valid 6+ months beyond May 9)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Wallet (cards, cash – euros)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Flight confirmations &amp; boarding passes</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Universal adapter (Spain: Type C/F plugs)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">AirTag / luggage tracker</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Glasses</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Tote bag</div></div>
+    <h3>👔 Clothing</h3>
+    <div class="check-item"><input type="checkbox"><div class="check-label">T-shirts / casual tops (5–6)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Nicer shirts for evenings (2–3)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Pants / jeans (2–3)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Nice shorts (4)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Underwear &amp; socks (7–8 pairs each)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Light sweater</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Rain jacket</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Comfortable walking shoes — essential</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Nicer shoes for flamenco / dinners</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Crocs</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Swimsuit</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Sunglasses</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">2 Hats</div></div>
+    <h3>🧴 Toiletries</h3>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Toothbrush &amp; toothpaste</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Deodorant</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Moisturizer</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Sunscreen — important in Spain in May</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Lip balm with SPF</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Razor</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Prescription medications</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Pain reliever (ibuprofen / Tylenol)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Antidiarrheal / stomach medication</div></div>
+    <h3>📱 Tech</h3>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Phone &amp; charger</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Portable charger / power bank</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">AirPods</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Book</div></div>
+    <h3>🏟️ Activity-Specific</h3>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Light daypack / crossbody bag (Toledo)</div></div>
+    <div class="check-item"><input type="checkbox"><div class="check-label">Reusable water bottle</div></div>
+  </div>
+</main></div>
+
+<!-- ===== MAPS ===== -->
+<div id="tab-maps" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>📍 Google Maps Lists</h2>
+    <p class="subtitle-text">Saved lists for the trip. Tap to open in Google Maps.</p>
+    <div class="maps-grid">
+      <div class="map-card"><div class="map-icon">🍽️</div><div class="map-title">Restaurants</div><div class="map-desc">Saved restaurants across all three cities</div><a class="map-btn" href="https://maps.app.goo.gl/BnMUUzwYHy4SLXhVA" target="_blank">Open in Maps →</a></div>
+      <div class="map-card"><div class="map-icon">🎭</div><div class="map-title">Entertainment</div><div class="map-desc">Shows, venues &amp; activities</div><a class="map-btn" href="https://maps.app.goo.gl/BnMUUzwYHy4SLXhVA" target="_blank">Open in Maps →</a></div>
+      <div class="map-card"><div class="map-icon">🏨</div><div class="map-title">Hotels</div><div class="map-desc">Accommodation across all three cities</div><a class="map-btn" href="https://maps.app.goo.gl/ZZxmgYd4ax1hW8AHA" target="_blank">Open in Maps →</a></div>
+      <div class="map-card"><div class="map-icon">🚆</div><div class="map-title">Train Stations</div><div class="map-desc">Key stations for intercity travel</div><a class="map-btn" href="https://maps.app.goo.gl/ZZxmgYd4ax1hW8AHA" target="_blank">Open in Maps →</a></div>
+      <div class="map-card"><div class="map-icon">🛍️</div><div class="map-title">Shopping</div><div class="map-desc">Shops, markets &amp; boutiques</div><a class="map-btn" href="https://maps.app.goo.gl/1WQswu3a7ARCtTb87" target="_blank">Open in Maps →</a></div>
+    </div>
+  </div>
+</main></div>
+
+<!-- ===== ARRIVAL ===== -->
+<div id="tab-arrival" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>🛬 Upon Arrival</h2>
+    <p class="subtitle-text">Transit passes, safety tips &amp; key do's and don'ts for each city.</p>
+    <div class="arrival-city">
+      <div class="arrival-city-title madrid">🏙️ Madrid</div>
+      <div class="arrival-block"><h4 class="metro">🚇 Metro Pass</h4><ul>
+        <li>Buy a <strong>Tarjeta Multi</strong> (€2.50) at any metro machine — English available. Load with <strong>Tourist Travel Pass</strong>: 1 day €10 · 2 days €17 · 3 days €22.50 · 5 days €32.50</li>
+        <li>Zone A covers all of central Madrid including airport — no extra airport fee with Tourist Pass</li>
+        <li>Each person needs their own card — not shareable. Buy at the airport on arrival or at Atocha station</li>
+      </ul><a class="source-link" href="https://www.esmadrid.com/en/madrid-tourist-travel-pass" target="_blank">→ Official Madrid Tourist Pass Info</a></div>
+      <div class="arrival-block"><h4 class="safety">🚨 Pickpocket Tips</h4><ul>
+        <li>Lower risk than Barcelona, but stay alert at Puerta del Sol, Gran Vía, Plaza Mayor and the Metro</li>
+        <li><strong>Terrace scam:</strong> Someone puts a map on your café table to cover your phone — put your hand over it immediately</li>
+        <li><strong>Rosemary scam:</strong> Never accept rosemary from strangers — it's a distraction tactic</li>
+        <li>Never leave phone or wallet on a café table or hanging on a chair back. Nothing in back pockets</li>
+      </ul></div>
+      <div class="arrival-block"><h4 class="tips">✅ Do's &amp; Don'ts</h4><ul>
+        <li><strong>Do</strong> eat late — lunch 2–4 PM, dinner rarely before 9 PM</li>
+        <li><strong>Do</strong> greet with "Buenos días" when entering shops or bars</li>
+        <li><strong>Don't</strong> tip excessively — rounding up is standard; 10% is generous</li>
+        <li><strong>Do</strong> carry some cash — smaller tapas bars often don't accept cards</li>
+      </ul></div>
+    </div>
+    <div class="arrival-city">
+      <div class="arrival-city-title valencia">🥘 Valencia</div>
+      <div class="arrival-block"><h4 class="metro">🚇 Transit Pass</h4><ul>
+        <li>Buy a <strong>10-trip card</strong> (~€9.30) at any metro station — shareable between two people</li>
+        <li>Single tickets ~€1.50 for occasional use. City center, beach and City of Arts are easily walkable</li>
+        <li>Taxis and Cabify/Uber are affordable and widely available</li>
+      </ul></div>
+      <div class="arrival-block"><h4 class="safety">🚨 Pickpocket Tips</h4><ul>
+        <li>Valencia is notably safer than Barcelona or Madrid for petty theft</li>
+        <li>Still stay alert in the Central Market, El Carmen, and at bus/metro stations</li>
+        <li>Don't leave valuables unattended on the beach. Standard precautions apply</li>
+      </ul></div>
+      <div class="arrival-block"><h4 class="tips">✅ Do's &amp; Don'ts</h4><ul>
+        <li><strong>Do</strong> try agua de Valencia — cava, orange juice &amp; vodka cocktail</li>
+        <li><strong>Do</strong> eat paella at lunch — locals never eat it for dinner</li>
+        <li><strong>Don't</strong> put chorizo in paella — Valencians take this very seriously!</li>
+        <li><strong>Do</strong> try horchata from a local horchatería — Valencia is its birthplace</li>
+      </ul></div>
+    </div>
+    <div class="arrival-city">
+      <div class="arrival-city-title barcelona">🏖️ Barcelona</div>
+      <div class="arrival-block"><h4 class="metro">🚇 Metro / Transit Pass</h4><ul>
+        <li><strong>Barcelona Card</strong> (best option): unlimited metro/bus + free entry to 25+ museums. 3-day from ~€53</li>
+        <li><strong>T-Casual 10-trip card</strong> ~€12.15 — shareable between two people · Single ticket ~€2.55</li>
+        <li>Barcelona Card may pay for itself quickly — Picasso Museum alone is €14 per person</li>
+      </ul></div>
+      <div class="arrival-block"><h4 class="safety">🚨 Pickpocket Tips — IMPORTANT</h4><ul>
+        <li><strong>Highest pickpocket concentration in Spain</strong> — stay vigilant on La Rambla and the Metro</li>
+        <li>Highest risk: La Rambla, La Boqueria, Metro L3, Gothic Quarter, Barceloneta beach, stations</li>
+        <li><strong>Phone leash strongly recommended</strong> — phones snatched even from your hand</li>
+        <li>Crossbody bags worn in front — backpacks easily unzipped on the metro</li>
+        <li>Never put bag on back of a restaurant chair · Don't check phone map while walking</li>
+        <li>Leave passport in hotel safe — carry a photocopy · Avoid El Raval late at night</li>
+      </ul></div>
+      <div class="arrival-block"><h4 class="tips">✅ Do's &amp; Don'ts</h4><ul>
+        <li><strong>Do</strong> say "Gràcies" not "Gracias" — locals appreciate the Catalan</li>
+        <li><strong>Don't</strong> eat on La Rambla itself — overpriced; duck one street over</li>
+        <li><strong>Do</strong> enjoy vermut (vermouth) hour around noon–2 PM on weekends</li>
+        <li><strong>Do</strong> explore El Born, Gràcia and Poblenou — where locals actually hang out</li>
+      </ul></div>
+    </div>
+  </div>
+</main></div>
+
+<!-- ===== ACTIVITIES ===== -->
+<div id="tab-activities" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>🎉 Other Activities</h2>
+    <p class="subtitle-text">Ideas for free time, rainy days, or spontaneous plans.</p>
+    <div class="badge-legend">
+      <span style="background:#e8f5e9;color:#1e8449;">⚡ Quick</span>
+      <span style="background:#e3f2fd;color:#2980b9;">⏱ Half Day</span>
+      <span style="background:#fef9e7;color:#b7770d;">🌍 Full Day</span>
+      <span style="background:#f3e5f5;color:#7b1fa2;">🌧 Rainy Day</span>
+      <span style="background:#fce4ec;color:#c62828;">📅 Event</span>
+    </div>
+    <div class="activity-city">
+      <div class="activity-city-title madrid">🏙️ Madrid</div>
+      <div class="activity-grid">
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🎨</div><div class="act-name">Thyssen-Bornemisza Museum</div><span class="act-badge badge-rainy">🌧 Rainy</span></div><div class="act-desc">World-class art from medieval to pop. Completes the Golden Triangle with Prado and Reina Sofía.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🏰</div><div class="act-name">Royal Palace of Madrid</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">The official royal residence — stunning state rooms and armory.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🌳</div><div class="act-name">Retiro Park</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">Madrid's Central Park — rowboat on the lake, rose garden, Crystal Palace. Stunning in spring.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">⚽</div><div class="act-name">Bernabéu Stadium Tour</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">Tour the newly renovated Santiago Bernabéu. Trophy room, pitch views, full immersive experience.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🛒</div><div class="act-name">Mercado de San Miguel</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">Beautiful iron-and-glass market near Plaza Mayor. Gourmet tapas, wine &amp; local specialties.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🌃</div><div class="act-name">Rooftop Bar Hopping</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">Círculo de Bellas Artes has the most famous panoramic terrace. EME Catedral also excellent.</div></div>
+      </div>
+    </div>
+    <div class="activity-city">
+      <div class="activity-city-title valencia">🥘 Valencia</div>
+      <div class="activity-grid">
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🦁</div><div class="act-name">BIOPARC Valencia</div><span class="act-badge badge-full">🌍 Full Day</span></div><div class="act-desc">One of Europe's best zoos — animals in natural African habitats. Gorillas, giraffes, elephants.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🌊</div><div class="act-name">L'Oceanogràfic</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">Europe's largest aquarium inside the City of Arts. Sharks, belugas, dolphins, underwater tunnel.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🚲</div><div class="act-name">Bike the Jardí del Túria</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">Valencia's former river — 9km green park. Bike from Old Town to City of Arts, best way to see the city.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🏛️</div><div class="act-name">Cathedral &amp; Holy Grail</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">Valencia Cathedral houses what many believe is the actual Holy Grail. Climb Miguelete tower for views.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🍹</div><div class="act-name">Barrio del Carmen Nightlife</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">Valencia's most vibrant nightlife district. International crowd, bars open till 3 AM.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🏟️</div><div class="act-name">Mestalla Stadium Tour</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">"Mestalla Forever Tour" — dressing rooms, tunnel, pitch views. Great complement to the match.</div></div>
+      </div>
+    </div>
+    <div class="activity-city">
+      <div class="activity-city-title barcelona">🏖️ Barcelona</div>
+      <div class="activity-grid">
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🎵</div><div class="act-name">Palau de la Música Catalana</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">UNESCO-listed Modernista concert hall — one of the most beautiful interiors in Europe. Steps from your hotel.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🏔️</div><div class="act-name">Montjuïc Hill</div><span class="act-badge badge-full">🌍 Full Day</span></div><div class="act-desc">Cable car, castle, Fundació Joan Miró, Poble Espanyol, Magic Fountain evening shows.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🎨</div><div class="act-name">Picasso Museum</div><span class="act-badge badge-half">⏱ Half Day</span></div><div class="act-desc">Major Picasso collection in five medieval palaces in El Born — your neighborhood. Book ahead.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🍻</div><div class="act-name">El Born Bar Crawl</div><span class="act-badge badge-quick">⚡ Quick</span></div><div class="act-desc">El Xampanyet → Bar del Pla → Paradiso (hidden behind a pastrami shop — ask for the door).</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🏛️</div><div class="act-name">World Capital of Architecture 2026</div><span class="act-badge badge-event">📅 All May</span></div><div class="act-desc">Free exhibitions, open buildings, guided routes all month across the city.</div></div>
+        <div class="activity-card"><div class="act-header"><div class="act-icon">🌊</div><div class="act-name">L'Aquàrium Barcelona</div><span class="act-badge badge-rainy">🌧 Rainy</span></div><div class="act-desc">One of Europe's largest aquariums at Port Vell. Shark tunnel, Mediterranean ecosystems.</div></div>
+      </div>
+    </div>
+  </div>
+</main></div>
+
+<!-- ===== MEAL CHEAT SHEET ===== -->
+<div id="tab-cheat" class="tab-panel">
+<div class="food-panel-wrap">
+<div class="food-inner" id="cheat-inner"></div>
+</div>
+</div>
+
+<!-- ===== FULL FOOD GUIDE ===== -->
+<div id="tab-guide" class="tab-panel">
+<div class="food-panel-wrap">
+  <div class="guide-controls">
+    <div class="guide-controls-inner">
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input class="search-input" type="text" id="searchInput" placeholder="Search by name, neighborhood, food type…" oninput="applyFilters()">
+      </div>
+      <div class="filter-group">
+        <span class="fg-label">City</span>
+        <button class="pill pv" data-fgroup="city" data-fval="Valencia">Valencia</button>
+        <button class="pill pm" data-fgroup="city" data-fval="Madrid">Madrid</button>
+        <button class="pill" data-fgroup="city" data-fval="Toledo">Toledo</button>
+        <button class="pill pb" data-fgroup="city" data-fval="Barcelona">Barcelona</button>
+      </div>
+      <div class="filter-group">
+        <span class="fg-label">Type</span>
+        <button class="pill" data-fgroup="type" data-fval="Restaurant">🍽 Restaurant</button>
+        <button class="pill" data-fgroup="type" data-fval="Coffee">☕ Coffee</button>
+        <button class="pill" data-fgroup="type" data-fval="Bar">🍷 Bar</button>
+        <button class="pill" data-fgroup="type" data-fval="Taberna">🫙 Taberna</button>
+        <button class="pill" data-fgroup="type" data-fval="Bakery">🥐 Bakery</button>
+        <button class="pill" data-fgroup="type" data-fval="Market">🧺 Market</button>
+        <button class="pill" data-fgroup="type" data-fval="Cocktail">🍸 Cocktail</button>
+      </div>
+      <div class="filter-group">
+        <span class="fg-label">Show</span>
+        <button class="pill" data-fgroup="gem" data-fval="true">★ Top Picks Only</button>
+        <button class="pill" data-fgroup="reserve" data-fval="book">📅 Needs Reservation</button>
+        <button class="pill" data-fgroup="meal" data-fval="dinner">🌙 Dinner</button>
+        <button class="pill" data-fgroup="meal" data-fval="lunch">☀ Lunch</button>
+      </div>
+      <span class="res-count" id="resCount">— venues</span>
+    </div>
+  </div>
+  <div class="guide-main" id="guideMain"></div>
+</div>
+</div>
+
+<!-- ===== MEAL PICKER ===== -->
+<div id="tab-picker" class="tab-panel">
+<div class="picker-outer">
+  <div class="picker-wrap">
+    <div class="picker-intro" id="pickerIntro">
+      <div class="eyebrow">España '26 · Meal Picker</div>
+      <h2>Can't decide<br><em style="color:var(--gold-hi)">where to eat?</em></h2>
+      <p>Answer 5 quick questions and we'll pick the perfect restaurant for this exact moment.</p>
+      <button class="btn-primary" id="startPickerBtn">Let's go →</button>
+    </div>
+    <div id="pickerQuestions"></div>
+    <div class="picker-result" id="pickerResult"></div>
+  </div>
+</div>
+</div>
+
+<!-- ===== FREE TIME ===== -->
+<div id="tab-windows" class="tab-panel"><main>
+  <div class="section-card" style="margin-top:0">
+    <h2>🗓 Free Time</h2>
+    <p class="subtitle-text">Windows with no fixed plans — open for exploring, rest or spontaneous additions.</p>
+    <div class="flex-item"><div class="flex-date">Wed 4/29</div><div class="flex-window">After hotel check-in → ~5:30 PM<div class="flex-note">Optional Malasaña vintage shopping</div></div></div>
+    <div class="flex-item"><div class="flex-date">Thu 4/30</div><div class="flex-window">Free after lunch ~2:00 PM → 6:30 PM<div class="flex-note">Before dinner &amp; flamenco</div></div></div>
+    <div class="flex-item"><div class="flex-date">Fri 5/1</div><div class="flex-window">All day in Toledo + after ~4:25 PM return<div class="flex-note">Self-guided Toledo; Labor Day wandering in Madrid evening</div></div></div>
+    <div class="flex-item"><div class="flex-date">Sat 5/2</div><div class="flex-window">After hotel check-in ~5:45 PM onward<div class="flex-note">Assumes Sunday soccer match</div></div></div>
+    <div class="flex-item"><div class="flex-date">Sun 5/3</div><div class="flex-window">All day beach/pool + after match (if Sunday)<div class="flex-note">Evening free if match was Saturday</div></div></div>
+    <div class="flex-item"><div class="flex-date">Mon 5/4</div><div class="flex-window">After sciences park stroll ~5:00 PM onward</div></div>
+    <div class="flex-item"><div class="flex-date">Tue 5/5</div><div class="flex-window">After hotel check-in ~3:30 PM onward<div class="flex-note">Gothic Quarter / El Born to explore</div></div></div>
+    <div class="flex-item"><div class="flex-date">Wed 5/6</div><div class="flex-window">Lunch &amp; bike ride fill afternoon · Evening free<div class="flex-note">After Sagrada Família ~11:30 AM</div></div></div>
+    <div class="flex-item"><div class="flex-date">Thu 5/7</div><div class="flex-window">After Park Güell lunch → free until Casa Batlló (TBD ~2:30 PM) · Free again after ~5 PM</div></div>
+    <div class="flex-item"><div class="flex-date">Fri 5/8</div><div class="flex-window">After La Boqueria &amp; La Rambla ~11:00 AM onward<div class="flex-note">Full flex afternoon &amp; farewell dinner</div></div></div>
+  </div>
+</main></div>
+
+<footer>🇪🇸 Spain Trip 2026 &nbsp;·&nbsp; <span>April 28 – May 9</span> &nbsp;·&nbsp; Madrid · Valencia · Barcelona</footer>
+
+<script>
+// ── TAB NAVIGATION ──────────────────────────────────
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.tab-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var tab = btn.getAttribute('data-tab');
+      showTab(tab, btn);
+    });
+  });
+  document.querySelectorAll('.day-header').forEach(function(h) {
+    h.addEventListener('click', function() { h.parentElement.classList.toggle('open'); });
+  });
+  document.querySelectorAll('.pill[data-fgroup]').forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      var g = pill.getAttribute('data-fgroup');
+      var v = pill.getAttribute('data-fval');
+      toggleF(g, v, pill);
+    });
+  });
+  var startBtn = document.getElementById('startPickerBtn');
+  if (startBtn) startBtn.addEventListener('click', startPicker);
+  buildCheat();
+});
+
+function showTab(name, btn) {
+  document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  var panel = document.getElementById('tab-' + name);
+  if (panel) panel.classList.add('active');
+  if (btn) btn.classList.add('active');
+  if (btn) btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  if (name === 'guide' && !window.guideBuilt) { buildGuide(); window.guideBuilt = true; }
+}
+
+// ── VENUE DATA ──────────────────────────────────────
+var V=[
+  {name:"Karak",city:"Valencia",hood:"Old Town (El Mercat)",type:"Restaurant",icon:"🍽",tagline:"Creative tasting menus · Michelin-recognized, European-Asian fusion",verdict:"The single best dinner in Valencia. Full stop.",price:"€€€€",priceReal:"€80–120pp",michelin:true,reserveTier:"book",reserveNote:"2–3 weeks ahead — essential",bookingUrl:"https://www.thefork.com/restaurant/karak-r835969",mapUrl:"https://www.google.com/maps/place/Karak",hours:"Tue–Sun · Lunch 1:30 PM & Dinner 9 PM",meals:["lunch","dinner"],gem:true,desc:"Chef Rakel Cernicharo's Michelin-recognized jewel. Tasting menus (S/M/L) showcase European-Asian fusion with seasonal ingredients. Open kitchen, intimate atmosphere, exceptional sommelier.",tags:["creative","tasting","fine-dining","romantic","asian","fusion"]},
+  {name:"Canalla Bistro by Ricard Camarena",city:"Valencia",hood:"Ruzafa",type:"Restaurant",icon:"🍽",tagline:"Global fusion tapas · Michelin chef, Ruzafa, ~€50pp",verdict:"Bold, fun, the best-value Michelin-pedigree dinner in Valencia.",price:"€€–€€€",priceReal:"€45–60pp",michelin:true,reserveTier:"book",reserveNote:"1–2 weeks ahead",bookingUrl:"https://www.thefork.com/restaurant/canalla-bistro-r835922",mapUrl:"https://www.google.com/maps/place/Canalla+Bistro+by+Ricard+Camarena",hours:"Mon–Sun · 1:30–3:30 PM & 8–11:30 PM",meals:["lunch","dinner"],gem:true,desc:"The fun, affordable sibling of Ricard Camarena's two-Michelin-star restaurant. International fusion with serious culinary chops — Peruvian ceviche, Asian tuna tartare, miso aubergine, soft-shell crab bao.",tags:["fusion","lively","tapas","latin","asian","michelin-pedigree"]},
+  {name:"Casa Montaña",city:"Valencia",hood:"El Cabanyal",type:"Taberna",icon:"🫙",tagline:"Historic bodega since 1836 · anchovies, jamón, deep wine cellar",verdict:"The soul of Valencia. A cultural experience as much as a meal.",price:"€€–€€€",priceReal:"€35–55pp",michelin:true,reserveTier:"book",reserveNote:"1–2 weeks",bookingUrl:"https://casamontana.net",mapUrl:"https://www.google.com/maps/place/Casa+Montana+Valencia",hours:"Mon–Sat 1–4 PM & 7:30–11:30 PM · Sun 12:30–4 PM only",meals:["lunch","dinner"],gem:true,desc:"Valencia's most beloved traditional bodega, open since 1836 in the old fisherman quarter. Famous for anchovies from Santoña, 100% acorn-fed jamón, Valencian clóchinas, cod croquettes.",tags:["traditional","seafood","wine","local","historic"]},
+  {name:"Casa Carmela",city:"Valencia",hood:"Malvarrosa Beach",type:"Restaurant",icon:"🍽",tagline:"Wood-fire paella institution · beachside, theatrical kitchen",verdict:"If you eat one paella in Valencia, eat it here.",price:"€€–€€€",priceReal:"€35–55pp",michelin:false,reserveTier:"book",reserveNote:"1–2 weeks · lunch only for paella",bookingUrl:"https://www.thefork.com/restaurant/casa-carmela",mapUrl:"https://www.google.com/maps/place/Casa+Carmela+Valencia",hours:"Lunch daily · Dinner Thu–Sat",meals:["lunch","dinner"],gem:true,desc:"One of Valencia's great paella temples. Cooked over open wood fire. Sticky, smoky, charred on the bottom. Best as a long, leisurely beach lunch.",tags:["paella","traditional","seafood","beach","local"]},
+  {name:"El Aprendiz de Tapas",city:"Valencia",hood:"Benimaclet",type:"Restaurant",icon:"🍽",tagline:"Eclectic fusion tapas · hidden gem, staggering value",verdict:"Go before they raise the prices. Best hidden gem on the entire list.",price:"€€",priceReal:"€25–40pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/El+Aprendiz+de+tapas",hours:"Tue–Sun lunch & dinner",meals:["lunch","dinner"],gem:true,desc:"Off the beaten path in Benimaclet. Smoky aubergine with mozzarella, Chinese-style pork dumplings, Thai ribs with yellow curry, tuna ceviche with plantain. Staggeringly good value.",tags:["fusion","creative","tapas","value","asian","latin"]},
+  {name:"Jimmy Glass Jazz Bar",city:"Valencia",hood:"El Carmen",type:"Bar",icon:"🎷",tagline:"Jazz bar · craft cocktails, live music, vinyl, El Carmen",verdict:"Valencia's best bar. Go after dinner in the Old Town.",price:"€–€€",priceReal:"€8–15 per drink",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Jimmy+Glass+Jazz+Bar",hours:"Evening & late night daily",meals:["drinks"],gem:true,desc:"Valencia's legendary jazz bar in El Carmen. Excellent cocktails, vinyl records, regular live jazz acts.",tags:["jazz","cocktails","music","nightlife","oldtown"]},
+  {name:"Horchatería de Santa Catalina",city:"Valencia",hood:"Old Town",type:"Coffee",icon:"☕",coffeeTop:true,tagline:"Historic horchata house · since 1836, stunning tiled interior",verdict:"Non-negotiable morning stop in the Old Town.",price:"€",priceReal:"€2–6pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Horchateria+de+Santa+Catalina",hours:"Daily 9 AM–9 PM",meals:["breakfast","snack"],gem:true,desc:"One of Valencia's most historic horchaterías. The place to try horchata with fartons. An essential mid-morning cultural experience.",tags:["horchata","historic","traditional","coffee","oldtown"]},
+  {name:"Central Market of Valencia",city:"Valencia",hood:"Old Town",type:"Market",icon:"🧺",tagline:"Art Nouveau market masterpiece · 1,200+ stalls, stunning building",verdict:"One of the most beautiful buildings in Europe. Non-negotiable visit.",price:"€",priceReal:"Free to browse",michelin:false,reserveTier:"easy",reserveNote:"No reservation",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Central+Market+of+Valencia",hours:"Mon–Sat 7:30 AM–3:00 PM",meals:["breakfast","lunch"],gem:true,desc:"One of Europe's most beautiful market buildings — Art Nouveau masterpiece from 1928. 1,200+ stalls: fresh seafood, meats, produce, jamón, smoked fish.",tags:["market","architecture","produce","shopping"]},
+  {name:"Raza Madrid Barquillo",city:"Madrid",hood:"Chueca / Barquillo",type:"Restaurant",icon:"🍽",tagline:"Premium steakhouse · open fire grill, Wagyu, candlelit, special occasions",verdict:"Your personal pick for a special occasion. The reviews back you up completely.",price:"€€€€",priceReal:"€80–90pp dinner",michelin:false,reserveTier:"book",reserveNote:"1–2 weeks ahead — essential",bookingUrl:"https://razamadrid.com",mapUrl:"https://www.google.com/maps/place/Raza+Madrid+Barquillo",hours:"Lunch & dinner daily",meals:["lunch","dinner"],gem:true,desc:"Open fire grill center stage. Premium Argentine and Iberian cuts, Wagyu options. Beautiful candlelit atmosphere. Rated 4.8/5 across thousands of reviews.",tags:["steak","grill","romantic","special","wagyu","fire"]},
+  {name:"Trèsde",city:"Madrid",hood:"La Latina",type:"Restaurant",icon:"🍽",tagline:"Bib Gourmand Michelin 2026 · €46 3-course, sherry/sake/wine pairing",verdict:"Best quality-to-price ratio for a Michelin-level meal in all of Madrid.",price:"€€",priceReal:"€46pp + drinks",michelin:true,reserveTier:"book",reserveNote:"2–3 weeks ahead — dinner only, small room",bookingUrl:"https://www.thefork.com/restaurant/tresde-r818142",mapUrl:"https://www.google.com/maps/place/Tresde+Restaurante+Madrid",hours:"Dinner only · Closed Mon",meals:["dinner"],gem:true,desc:"Michelin Bib Gourmand 2026. Three-course €46 menu with unique three-glass pairing: sherry, sake, and minimal-intervention wine. Market-inspired. Intimate, English-speaking staff.",tags:["michelin","seasonal","wine","intimate","dinner-only","value"]},
+  {name:"Bacira",city:"Madrid",hood:"Chamberí",type:"Restaurant",icon:"🍽",tagline:"Mediterranean-Japanese-Nikkei fusion · three-chef collaboration, sharing",verdict:"Most creatively interesting restaurant in Madrid right now.",price:"€€–€€€",priceReal:"€45–70pp",michelin:false,reserveTier:"warn",reserveNote:"1 week ahead",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Bacira+Madrid",hours:"Lunch & dinner · Closed Mon",meals:["lunch","dinner"],gem:true,desc:"Three owner-chefs — Mediterranean, Japanese, and Nikkei specialists — sharing one kitchen. Pacific scallops with jalapeño aguachile, pig's ear mollete with Korean salsa.",tags:["fusion","japanese","nikkei","sharing","creative"]},
+  {name:"Casa Dani",city:"Madrid",hood:"Retiro / Mercado de la Paz",type:"Restaurant",icon:"🍽",tagline:"Best tortilla española in Madrid · market lunch, huge queues",verdict:"Best tortilla in Madrid and it's not even close.",price:"€–€€",priceReal:"€20–35pp",michelin:false,reserveTier:"warn",reserveNote:"Walk-in but queue expected — arrive before 2 PM",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Casa+Dani+Madrid",hours:"Lunch daily only · Closed Sun",meals:["lunch"],gem:true,desc:"Beloved institution in the Mercado de la Paz, near Retiro. Widely regarded as the best tortilla española in Madrid.",tags:["tortilla","local","lunch-only","market","tapas"]},
+  {name:"Taberna Maceira",city:"Madrid",hood:"Huertas",type:"Taberna",icon:"🫙",tagline:"Galician seafood taberna · menú del día, octopus, rice, near museums",verdict:"Best lunch option near the Prado/Reina Sofía museum district.",price:"€–€€",priceReal:"€20–35pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in or call day before",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Taberna+Maceira+Madrid",hours:"Lunch & dinner daily",meals:["lunch","dinner"],gem:true,desc:"Rustic Galician tavern serving octopus, squid, clams, and cod. Great value menú del día. Walkable from the Prado and Reina Sofía.",tags:["galician","seafood","lunch","menu-del-dia","value","museums"]},
+  {name:"Bar Cock",city:"Madrid",hood:"Gran Vía",type:"Cocktail",icon:"🍸",tagline:"Historic cocktail bar · Buñuel & Dalí's haunt, 1920s British club",verdict:"Most atmospheric bar in Madrid. Non-negotiable evening stop.",price:"€€",priceReal:"€10–18 per drink",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Bar+Cock+Madrid",hours:"Evening & late night",meals:["drinks"],gem:true,desc:"Velvet walls, bow-tied bartenders, incredible cocktails, genuine Madrid history. Buñuel and Dalí's regular haunt.",tags:["cocktails","historic","art","nightlife","classic"]},
+  {name:"Taberna de Angel Sierra",city:"Madrid",hood:"Chueca",type:"Bar",icon:"🍷",tagline:"Preserved 1920s tavern · house vermouth on tap, time capsule",verdict:"The best free 30-minute cultural experience in Madrid.",price:"€",priceReal:"€4–10pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Taberna+de+Angel+Sierra+Madrid",hours:"Daily midday–late",meals:["drinks"],gem:true,desc:"One of the best-preserved old bars in Madrid. House vermouth on tap, zinc bar, beautiful tilework.",tags:["vermouth","historic","chueca","atmosphere","traditional"]},
+  {name:"Hola Coffee",city:"Madrid",hood:"Salamanca + Lavapiés",type:"Coffee",icon:"☕",coffeeTop:true,tagline:"Madrid's best specialty coffee · two prime locations",verdict:"Best specialty coffee in Madrid.",price:"€–€€",priceReal:"€3–8pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Hola+Coffee+Lagasca",hours:"Morning–afternoon",meals:["breakfast","snack"],gem:true,desc:"Widely regarded as the best specialty coffee in Madrid. Lagasca location in Salamanca; Fourquet near the museums.",tags:["specialty-coffee","best","salamanca"]},
+  {name:"Restaurante Taberna el Gallo Toledo",city:"Toledo",hood:"Toledo Historic Center",type:"Taberna",icon:"🫙",tagline:"Best sit-down lunch in Toledo · carcamusas, game dishes",verdict:"The right call for your Toledo day-trip lunch at 2 PM.",price:"€–€€",priceReal:"€20–35pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Restaurante+Taberna+el+Gallo+Toledo",hours:"Lunch & dinner",meals:["lunch","dinner"],gem:true,desc:"Traditional tavern in Toledo's historic center. Order carcamusas — Toledo's signature dish of pork and vegetables.",tags:["traditional","toledo","carcamusas","game","local"]},
+  {name:"Pastry Santo Tome",city:"Toledo",hood:"Toledo Center",type:"Bakery",icon:"🥐",tagline:"Mazapán (marzipan) institution · Toledo's most famous pastry shop",verdict:"Non-negotiable. Buy a box to take home.",price:"€",priceReal:"€3–15pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Pastry+Santo+Tome+Toledo",hours:"Daily",meals:["snack"],gem:true,desc:"Toledo is the marzipan capital of Spain. Santo Tome is the most famous purveyor — marzipan figures, pastries, and boxes to take home.",tags:["marzipan","mazapán","pastry","toledo","souvenir","must-buy"]},
+  {name:"El Xampanyet",city:"Barcelona",hood:"El Born (Carrer de Montcada)",type:"Bar",icon:"🍷",tagline:"Legendary cava bar · 100 years in El Born, house cava €2",verdict:"The single bar you cannot leave Barcelona without visiting. Three minutes from your hotel.",price:"€€",priceReal:"€25–35pp",michelin:false,reserveTier:"warn",reserveNote:"No reservations — arrive at opening (noon or 7 PM)",bookingUrl:"",mapUrl:"https://maps.app.goo.gl/CZHvxFEeMm8D4HrRA",hours:"Tue–Sun 12–3:30 PM & 7–11 PM · Closed Mon",meals:["lunch","dinner","drinks"],gem:true,desc:"Open since 1929. House cava starts at €2. Anchovies, tortilla, steak with Padrón peppers. Tiled walls, marble tables, locals and out-of-towners happily packed in together.",tags:["cava","tapas","historic","local","elborn","must-visit","traditional"]},
+  {name:"Bar del Pla",city:"Barcelona",hood:"El Born",type:"Bar",icon:"🍷",tagline:"Modern tapas · best patatas bravas in BCN, natural wine, El Born",verdict:"Best all-around tapas bar in El Born. Steps from your hotel.",price:"€€",priceReal:"€30–45pp",michelin:false,reserveTier:"warn",reserveNote:"Walk-in but arrive by 9 PM",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Bar+del+Pla+Barcelona",hours:"Daily 12–midnight",meals:["lunch","dinner"],gem:true,desc:"Oxtail stewed in red wine, what many call the best patatas bravas in Barcelona, daily specials, 30+ natural wine labels.",tags:["tapas","natural-wine","elborn","local","modern","patatas-bravas"]},
+  {name:"Cal Pep",city:"Barcelona",hood:"El Born (Plaça de les Olles)",type:"Restaurant",icon:"🍽",tagline:"Barcelona's most storied tapas counter · tortilla that ruins all others",verdict:"The tortilla española here will ruin every other tortilla for the rest of your life.",price:"€€",priceReal:"€35–50pp",michelin:false,reserveTier:"warn",reserveNote:"Walk-in only — queue from 7 PM at the bar",bookingUrl:"https://calpep.com",mapUrl:"https://www.google.com/maps/place/Cal+Pep+Barcelona",hours:"Mon–Sat dinner · Lunch Tue–Sat",meals:["lunch","dinner"],gem:true,desc:"Barcelona's most beloved tapas counter in El Born. The Spanish tortilla here is, by common consensus, in a category of its own.",tags:["tapas","tortilla","historic","elborn","seafood","counter"]},
+  {name:"Suculent",city:"Barcelona",hood:"Raval",type:"Restaurant",icon:"🍽",tagline:"Traditional Catalan elevated · seasonal, market-driven, Michelin Selected",verdict:"Best restaurant for serious traditional Catalan cuisine in Barcelona.",price:"€€€",priceReal:"€45–65pp",michelin:true,reserveTier:"book",reserveNote:"1 week ahead",bookingUrl:"https://suculent.com",mapUrl:"https://www.google.com/maps/place/Suculent+Barcelona",hours:"Lunch & dinner Tue–Sat",meals:["lunch","dinner"],gem:true,desc:"Chef Tonet elevates traditional Catalan cuisine with seasonal, locally-sourced ingredients.",tags:["catalan","traditional","seasonal","michelin","wine","serious"]},
+  {name:"Gresca",city:"Barcelona",hood:"Eixample",type:"Restaurant",icon:"🍽",tagline:"Michelin Selected · foie gras bikini sandwich, natural wine, intimate",verdict:"The foie gras bikini sandwich alone is worth coming to Barcelona for.",price:"€€€",priceReal:"€50–70pp",michelin:true,reserveTier:"book",reserveNote:"1–2 weeks ahead",bookingUrl:"https://gresca.net",mapUrl:"https://www.google.com/maps/place/Gresca+Barcelona",hours:"Lunch & dinner Mon–Fri · Dinner only Sat",meals:["lunch","dinner"],gem:true,desc:"Chef Rafa Peña's intimate Eixample spot. His now-famous foie gras bikini sandwich is a genius mashup of haute cuisine and the humble Catalan grilled ham-and-cheese sandwich.",tags:["michelin","foie-gras","creative","natural-wine","intimate","eixample"]},
+  {name:"La Cova Fumada",city:"Barcelona",hood:"Barceloneta",type:"Bar",icon:"🍷",tagline:"Birthplace of the bomba · Barceloneta, cash only, legendary",verdict:"Where the bomba was invented. Get there before they run out.",price:"€",priceReal:"€15–25pp",michelin:false,reserveTier:"warn",reserveNote:"Walk-in · Opens 9 AM, closes when sold out",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/La+Cova+Fumada+Barcelona",hours:"Mon–Sat 9 AM–3 PM only · Cash only",meals:["lunch"],gem:true,desc:"This unassuming Barceloneta bar is credited with inventing the bomba. Cash only, no reservations, closes when they run out of food.",tags:["bomba","barceloneta","local","cash-only","historic","seafood","morning"]},
+  {name:"Quimet & Quimet",city:"Barcelona",hood:"Poble-sec",type:"Bar",icon:"🍷",tagline:"Standing-room montaditos · tinned seafood, vermouth, midday only",verdict:"One of the most unique lunch experiences in Barcelona.",price:"€–€€",priceReal:"€20–30pp",michelin:false,reserveTier:"warn",reserveNote:"Walk-in · Midday only, fills to bursting by 1 PM",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Quimet+Quimet+Barcelona",hours:"Mon–Sat 12–4 PM only",meals:["lunch"],gem:true,desc:"Tiny standing-room bar in Poble-sec doing creative montaditos and house vermouth since 1914.",tags:["montaditos","tinned-seafood","vermouth","standing","poble-sec","unique","lunch-only"]},
+  {name:"Bar Brutal",city:"Barcelona",hood:"El Born",type:"Bar",icon:"🍷",tagline:"Natural wine bar · grungy, excellent, late night El Born",verdict:"Best natural wine bar in Barcelona. Go after El Xampanyet.",price:"€€",priceReal:"€15–25 drinks + food",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Bar+Brutal+Barcelona",hours:"Daily from 7 PM",meals:["drinks","dinner"],gem:true,desc:"The grungy natural wine bar of El Born. Excellent natural wine selection, small food menu, loud and lively.",tags:["natural-wine","nightlife","elborn","casual","late-night"]},
+  {name:"Nømad Coffee",city:"Barcelona",hood:"El Born (Passatge Sert)",type:"Coffee",icon:"☕",coffeeTop:true,tagline:"Barcelona's top specialty roasters · steps from Borneta Hotel",verdict:"Best coffee in El Born and very close to your hotel.",price:"€–€€",priceReal:"€3–7pp",michelin:false,reserveTier:"easy",reserveNote:"Walk-in",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Nomad+Coffee+Barcelona",hours:"Mon–Fri 8 AM–6 PM · Weekends 9 AM–6 PM",meals:["breakfast","snack"],gem:true,desc:"Barcelona's most celebrated specialty coffee roasters, just steps from Borneta Hotel in El Born.",tags:["specialty-coffee","elborn","roasters","best","close-to-hotel"]},
+  {name:"Mercat de Santa Caterina",city:"Barcelona",hood:"El Born (5 min from hotel)",type:"Market",icon:"🧺",tagline:"Stunning mosaic market · locals only, skip La Boqueria",verdict:"The market to visit in Barcelona. Same stunning roof as La Boqueria, zero tourist nonsense.",price:"€",priceReal:"Free to browse",michelin:false,reserveTier:"easy",reserveNote:"No reservation",bookingUrl:"",mapUrl:"https://www.google.com/maps/place/Mercat+de+Santa+Caterina+Barcelona",hours:"Mon–Sat 7:30 AM–3:30 PM",meals:["breakfast","lunch"],gem:true,desc:"Five minutes from Borneta Hotel. Spectacular undulating mosaic roof, but primarily serves local residents. No pickpockets, no €6 smoothies.",tags:["market","local","architecture","elborn","mosaic","produce"]}
+];
+
+// ── FILTER LOGIC ──────────────────────────────────────
+var activeF = {city:[],type:[],gem:[],reserve:[],meal:[]};
+function toggleF(group, value, el) {
+  var i = activeF[group].indexOf(value);
+  if (i === -1) activeF[group].push(value); else activeF[group].splice(i, 1);
+  el.classList.toggle('active');
+  applyFilters();
+}
+function applyFilters() {
+  var q = (document.getElementById('searchInput')||{value:''}).value.toLowerCase();
+  var vis = 0;
+  document.querySelectorAll('.venue-card').forEach(function(card) {
+    var d = card.dataset;
+    var show = true;
+    if (q) { var s=(d.name+d.hood+d.desc+d.tagline+d.type+d.tags).toLowerCase(); if(!s.includes(q)) show=false; }
+    if (show && activeF.city.length>0 && !activeF.city.includes(d.city)) show=false;
+    if (show && activeF.type.length>0 && !activeF.type.includes(d.type)) show=false;
+    if (show && activeF.gem.length>0 && d.gem!=='true') show=false;
+    if (show && activeF.reserve.length>0 && d.rtier!=='book') show=false;
+    if (show && activeF.meal.length>0 && !activeF.meal.some(function(m){return d.meals.includes(m);})) show=false;
+    card.classList.toggle('v-hidden', !show);
+    if (show) vis++;
+  });
+  document.querySelectorAll('.gcity-section').forEach(function(sec) {
+    var v2 = sec.querySelectorAll('.venue-card:not(.v-hidden)').length;
+    sec.classList.toggle('c-hidden', v2===0);
+  });
+  var el = document.getElementById('resCount');
+  if (el) el.textContent = vis + ' venues';
+}
+function catStyle(type) {
+  var m = {Restaurant:'rgba(200,146,58,0.12)',Coffee:'rgba(160,112,80,0.14)',Bar:'rgba(128,96,160,0.14)',Taberna:'rgba(120,140,70,0.14)',Bakery:'rgba(160,112,80,0.14)',Market:'rgba(70,150,110,0.14)',Cocktail:'rgba(160,80,120,0.14)'};
+  return m[type]||'rgba(100,100,100,0.1)';
+}
+function catTxt(type) {
+  var m = {Restaurant:'#c89640',Coffee:'#b08060',Bar:'#9878c8',Taberna:'#9aac58',Bakery:'#b08060',Market:'#58c890',Cocktail:'#c87898'};
+  return m[type]||'#888';
+}
+function rtBadge(tier, note) {
+  if(tier==='book') return '<div class="reserve-tier rt-book"><div class="rt-dot"></div>📅 '+note+'</div>';
+  if(tier==='warn') return '<div class="reserve-tier rt-warn"><div class="rt-dot"></div>⚠️ '+note+'</div>';
+  return '<div class="reserve-tier rt-easy"><div class="rt-dot"></div>✅ '+note+'</div>';
+}
+function mealStr(meals) {
+  return meals.map(function(m){return ({lunch:'☀ Lunch',dinner:'🌙 Dinner',breakfast:'🌅 Breakfast',drinks:'🍷 Drinks',snack:'☕ Snack'})[m]||m;}).join(', ');
+}
+function buildCard(v) {
+  var cb = {Valencia:'bv',Madrid:'bm',Toledo:'bt',Barcelona:'bb'}[v.city]||'bv';
+  var mi = v.michelin ? '<span class="badge bmi">🌟 Michelin</span>' : '';
+  var ml = v.mapUrl ? '<a class="map-link" href="'+v.mapUrl+'" target="_blank">📍 Google Maps ↗</a>' : '';
+  var bl = v.bookingUrl ? '<a class="map-link" href="'+v.bookingUrl+'" target="_blank" style="margin-left:.75rem">🔗 Reserve ↗</a>' : '';
+  var vl = v.verdict ? '<div class="verdict-line">'+v.verdict+'</div>' : '';
+  return '<div class="venue-card '+(v.gem?'is-gem':'')+'" data-name="'+v.name+'" data-city="'+v.city+'" data-type="'+v.type+'" data-gem="'+(v.gem||false)+'" data-rtier="'+v.reserveTier+'" data-meals="'+v.meals.join(',')+'" data-hood="'+(v.hood||'')+'" data-desc="'+(v.desc||'').replace(/"/g,'&quot;')+'" data-tagline="'+(v.tagline||'').replace(/"/g,'&quot;')+'" data-tags="'+(v.tags||[]).join(',')+'">'+
+    (v.gem?'<div class="gem-label">★ TOP PICK</div>':'')+
+    '<div class="card-top"><div class="cat-icon" style="background:'+catStyle(v.type)+'">'+v.icon+'</div><div><div class="c-name">'+v.name+'</div><div class="c-tagline">'+v.tagline+'</div></div></div>'+
+    '<div class="card-badges"><span class="badge '+cb+'">'+v.city+'</span><span class="cat-tag" style="background:'+catStyle(v.type)+';color:'+catTxt(v.type)+'">'+v.type+'</span>'+mi+'</div>'+
+    vl+
+    '<p class="card-desc">'+v.desc+'</p>'+
+    '<div class="card-meta"><div class="mi"><span class="mk">Price</span><span class="mv price">'+v.price+' · '+v.priceReal+'</span></div><div class="mi"><span class="mk">Area</span><span class="mv">'+(v.hood||'')+'</span></div><div class="mi"><span class="mk">Hours</span><span class="mv">'+v.hours+'</span></div><div class="mi"><span class="mk">Meals</span><span class="mv">'+mealStr(v.meals)+'</span></div></div>'+
+    rtBadge(v.reserveTier,v.reserveNote)+
+    '<div>'+ml+bl+'</div></div>';
+}
+function buildGuide() {
+  var cities = ['Madrid','Toledo','Valencia','Barcelona'];
+  var dots = {Valencia:'dot-vlc',Madrid:'dot-mad',Toledo:'dot-tol',Barcelona:'dot-bcn'};
+  var html = '';
+  cities.forEach(function(city) {
+    var cvs = V.filter(function(v){return v.city===city;});
+    var nonCoffee = cvs.filter(function(v){return v.type!=='Coffee'&&v.type!=='Bakery';});
+    var topCoffee = cvs.filter(function(v){return (v.type==='Coffee'||v.type==='Bakery')&&v.coffeeTop;});
+    var otherCoffee = cvs.filter(function(v){return (v.type==='Coffee'||v.type==='Bakery')&&!v.coffeeTop;});
+    html += '<div class="gcity-section" data-city="'+city+'"><div class="city-divider"><div class="city-dot '+dots[city]+'"></div><h2>'+city+'</h2><div class="divider-line"></div><div class="divider-count">'+cvs.length+' venues</div></div><div class="venue-grid" id="grid-'+city+'-main">'+nonCoffee.map(buildCard).join('')+'</div>';
+    if(topCoffee.length+otherCoffee.length > 0) {
+      html += '<button class="coffee-toggle" data-city="'+city+'">☕ Coffee & Bakeries in '+city+' ('+( topCoffee.length+otherCoffee.length)+' options) — click to expand</button><div class="venue-grid coffee-hidden" id="grid-'+city+'-coffee">'+[...topCoffee,...otherCoffee].map(buildCard).join('')+'</div>';
+    }
+    html += '</div>';
+  });
+  document.getElementById('guideMain').innerHTML = html;
+  document.querySelectorAll('.coffee-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var city = btn.getAttribute('data-city');
+      var grid = document.getElementById('grid-'+city+'-coffee');
+      grid.classList.toggle('coffee-hidden');
+      btn.textContent = grid.classList.contains('coffee-hidden')
+        ? '☕ Coffee & Bakeries in '+city+' — click to expand'
+        : '☕ Coffee & Bakeries in '+city+' — click to collapse';
+    });
+  });
+  applyFilters();
+}
+
+// ── CHEAT SHEET ──────────────────────────────────────
+function buildCheat() {
+  var el = document.getElementById('cheat-inner');
+  if (!el) return;
+  el.innerHTML = '<div style="padding:0 1.5rem 4rem">'
+  + '<div class="cheat-hero"><div class="eyebrow">Spain Trip · April 29 – May 8, 2026</div><h1>Your Nightly Cheat Sheet</h1><p>One page per city. Which night, which restaurant, what to know.</p></div>'
+  + '<div class="timing-banner"><div class="tb-icon">⏰</div><div><h4>Spanish Dining Times — Read This First</h4><p>Spain runs <strong style="color:var(--ftext)">2–3 hours later</strong> than you\'re used to. Lunch is <strong style="color:var(--ftext)">2:00–4:00 PM</strong>. Dinner doesn\'t start until <strong style="color:var(--ftext)">9:00–9:30 PM</strong>. If a place says "walk-in OK," that means walk in at 9 PM, not 6:30 PM.</p></div></div>'
+
+  + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-mad"></div><h2>Madrid</h2><div class="dates">Apr 29 – May 2</div></div><div class="nights-grid">'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Wednesday</div><div class="night-date">Apr 29 · Arrival</div></div><div><div class="night-pick">No reservation — walk around</div><div class="night-verdict">Jet-lagged first night. Keep it casual.</div><div class="night-meta">Wander Malasaña or near hotel. Vinitus Gran Vía is reliable if you want something specific.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€10–25</span></div></div>'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Thursday</div><div class="night-date">Apr 30 · Flamenco 9 PM</div></div><div><div class="night-pick">Quick bite — done by 7:30 PM</div><div class="night-verdict">Must eat early — flamenco at 9 PM.</div><div class="night-meta">El Brillante near Atocha for bocadillos (counter, 20 min). No sit-down reservation.</div></div><div class="night-badge"><span class="nbadge nb-warn">Done by 7:30</span><span class="nbadge nb-price">€8–15</span></div></div>'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Friday</div><div class="night-date">May 1 · Labor Day + Toledo</div></div><div><div class="night-pick">Tapas crawl — no reservation needed</div><div class="night-verdict">Labor Day: many restaurants closed. But the streets are alive.</div><div class="night-meta"><strong style="color:var(--ftext)">La Latina / Calle Cava Baja</strong> — walk in and duck into whatever looks lively. Taberna de Angel Sierra for vermouth first.</div></div><div class="night-badge"><span class="nbadge nb-warn">⚠️ Many closed</span><span class="nbadge nb-easy">Walk-in crawl</span><span class="nbadge nb-price">€20–35</span></div></div>'
+  + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Saturday</div><div class="night-date">May 2 · Last Madrid night</div></div><div><div class="night-pick">★ Raza Madrid Barquillo — OR — ★ Trèsde</div><div class="night-verdict">Your one real sit-down dinner in Madrid. Make it count.</div><div class="night-meta"><strong style="color:var(--ftext)">Raza Barquillo</strong> — candlelit steakhouse, open fire grill, ~€80–90pp.<br><br><strong style="color:var(--ftext)">Trèsde</strong> — Michelin Bib Gourmand, €46 3-course, sherry/sake/wine pairing, dinner only. Book 2–3 weeks ahead.</div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Reserve Now</span><span class="nbadge nb-price">€46–90pp</span></div></div>'
+  + '</div></div>'
+
+  + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-tol"></div><h2>Toledo</h2><div class="dates">May 1 · Day trip</div></div><div class="nights-grid"><div class="night-row free"><div><div class="night-label" style="color:var(--TOL)">Friday Lunch</div><div class="night-date">May 1 · ~2 PM</div></div><div><div class="night-pick">Restaurante Taberna el Gallo Toledo</div><div class="night-verdict">Best sit-down lunch in the historic center.</div><div class="night-meta">Order <strong style="color:var(--ftext)">carcamusas</strong> — Toledo\'s signature dish, pork and vegetables. Also try partridge if available.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€20–35pp</span></div></div></div>'
+  + '<div class="section-label-sm">🍬 Must-Do in Toledo</div><div class="quick-grid" style="grid-template-columns:1fr"><div class="quick-card" style="border-left:2px solid var(--TOL)"><div class="qc-name">★ Pastry Santo Tome — Mazapán</div><div class="qc-sub">Toledo Center · Daily · ~€3–15</div><div class="qc-tag">Toledo is the marzipan capital of Spain. Buy a box. Non-negotiable stop.</div></div></div></div>'
+
+  + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-vlc"></div><h2>Valencia</h2><div class="dates">May 2–5</div></div><div class="nights-grid">'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--VLC)">Saturday Eve</div><div class="night-date">May 2 · Arrive ~5:45 PM</div></div><div><div class="night-pick">Depends on soccer match schedule</div><div class="night-verdict">Two scenarios — plan around whichever applies.</div><div class="night-meta"><strong style="color:var(--ftext)">Match Saturday:</strong> Quick tapas near Mestalla pre-game.<br><br><strong style="color:var(--ftext)">Match Sunday:</strong> ★ Canalla Bistro or Casa Montaña — reserve this night. Arrive at 9 PM.</div></div><div class="night-badge"><span class="nbadge nb-warn">⚽ Match-dependent</span><span class="nbadge nb-price">€35–55pp</span></div></div>'
+  + '<div class="night-row free"><div><div class="night-label" style="color:var(--VLC)">Sunday</div><div class="night-date">May 3</div></div><div><div class="night-pick">★ Karak (if match was Saturday)</div><div class="night-verdict">Best dinner of the entire Valencia leg. Book it.</div><div class="night-meta"><strong style="color:var(--ftext)">If match was Saturday:</strong> Reserve Karak — tasting menu (choose medium), wine pairing essential, ~€80–100pp. Book 2–3 weeks ahead.<br><br><strong style="color:var(--ftext)">If match is Sunday:</strong> Post-match, keep it easy. Walk-in tapas. <a class="night-link" href="https://www.thefork.com/restaurant/karak-r835969" target="_blank">🔗 Book Karak ↗</a></div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Book Karak Now</span><span class="nbadge nb-price">€80–100pp</span></div></div>'
+  + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Monday</div><div class="night-date">May 4 · Cooking class day</div></div><div><div class="night-pick">Light evening — beach tapas or El Carmen</div><div class="night-verdict">You\'ve already cooked and eaten paella. Keep it relaxed.</div><div class="night-meta">Jimmy Glass Jazz Bar for drinks after. Or a simple dinner near the Old Town. No reservation needed.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€15–30pp</span></div></div>'
+  + '</div></div>'
+
+  + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-bcn"></div><h2>Barcelona</h2><div class="dates">May 5–8</div></div><div class="nights-grid">'
+  + '<div class="night-row free"><div><div class="night-label" style="color:var(--BCN)">Tuesday</div><div class="night-date">May 5 · Arrive ~3 PM</div></div><div><div class="night-pick">El Xampanyet or Bar del Pla — no reservation</div><div class="night-verdict">First night in El Born. You\'re three minutes from the best bar in the neighborhood.</div><div class="night-meta">El Xampanyet opens at 7 PM. Arrive by 7:15. House cava, anchovies, tortilla. Then wander Gothic Quarter.</div></div><div class="night-badge"><span class="nbadge nb-warn">Arrive early</span><span class="nbadge nb-price">€25–35pp</span></div></div>'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--BCN)">Wednesday</div><div class="night-date">May 6 · Sagrada Família + bike day</div></div><div><div class="night-pick">Cervecería Catalana or Bodega Borràs</div><div class="night-verdict">Long physical day — you\'ll want something satisfying but don\'t need a reservation in advance.</div><div class="night-meta">Cervecería Catalana: classic, always good, walk-in queue moves fast. Bodega Borràs: better wine, more interesting food — worth the wait.</div></div><div class="night-badge"><span class="nbadge nb-warn">Queue likely</span><span class="nbadge nb-price">€30–45pp</span></div></div>'
+  + '<div class="night-row free"><div><div class="night-label" style="color:var(--BCN)">Thursday</div><div class="night-date">May 7 · Park Güell + Casa Batlló</div></div><div><div class="night-pick">★ Gresca or Cal Pep</div><div class="night-verdict">Your best full dinner night in Barcelona — no rush, nowhere to be.</div><div class="night-meta"><strong style="color:var(--ftext)">Gresca</strong> — foie gras bikini sandwich, natural wine, intimate Eixample. Book 1–2 weeks ahead.<br><br><strong style="color:var(--ftext)">Cal Pep</strong> — best tortilla in BCN, queue from 7 PM at the bar, no reservations. Walk-in only.</div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Book Gresca</span><span class="nbadge nb-price">€35–70pp</span></div></div>'
+  + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Friday</div><div class="night-date">May 8 · Farewell dinner</div></div><div><div class="night-pick">★ Suculent — or wherever your heart says</div><div class="night-verdict">Last night in Spain. Make it a memory.</div><div class="night-meta"><strong style="color:var(--ftext)">Suculent</strong> (Raval) — elevated Catalan, Michelin Selected, seasonal and beautiful. Book 1 week ahead.<br><br>Or go back to your favorite from the week and end on a high note.</div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Book Suculent</span><span class="nbadge nb-price">€45–65pp</span></div></div>'
+  + '</div></div>'
+  + '</div>';
+}
+
+// ── MEAL PICKER ──────────────────────────────────────
+var pickerAnswers = {};
+var pickerStep = 0;
+var pickerQs = [
+  {id:'city',text:'Which city are you in?',sub:'',opts:[{l:'Madrid',s:'Apr 29 – May 2'},{l:'Toledo',s:'May 1 · day trip'},{l:'Valencia',s:'May 2–5'},{l:'Barcelona',s:'May 5–8'}]},
+  {id:'time',text:'When are you eating?',sub:'Spanish dinner starts at 9 PM',opts:[{l:'Lunch',s:'2:00–4:00 PM'},{l:'Drinks / tapas',s:'Pre-dinner, 7–9 PM'},{l:'Dinner',s:'9:00 PM onward'},{l:'Breakfast / coffee',s:'Morning stop'}]},
+  {id:'vibe',text:'What\'s the vibe tonight?',sub:'Be honest with yourself',opts:[{l:'Special occasion',s:'This one needs to be excellent'},{l:'Casual & fun',s:'Good food, relaxed atmosphere'},{l:'Quick & easy',s:'I\'m tired, just feed me'},{l:'Local & authentic',s:'Where the locals actually go'}]},
+  {id:'cuisine',text:'Any cuisine pull?',sub:'',opts:[{l:'Spanish / traditional',s:'Tapas, paella, local classics'},{l:'Seafood',s:'Fish, shellfish, the ocean'},{l:'Creative / modern',s:'Michelin-adjacent, inventive'},{l:'No preference',s:'Surprise me'}]},
+  {id:'budget',text:'What\'s the budget?',sub:'Per person, drinks included',opts:[{l:'Under €30',s:'Casual, no-frills'},{l:'€30–60',s:'Good restaurant, proper meal'},{l:'€60–100',s:'Special, memorable'},{l:'Whatever it takes',s:'This is the trip of a lifetime'}]}
+];
+function startPicker() {
+  pickerAnswers = {}; pickerStep = 0;
+  document.getElementById('pickerIntro').style.display = 'none';
+  document.getElementById('pickerResult').classList.remove('active');
+  renderPickerQ();
+}
+function renderPickerQ() {
+  var q = pickerQs[pickerStep];
+  var dots = pickerQs.map(function(_,i){return '<div class="q-prog-dot'+(i<pickerStep?' done':i===pickerStep?' active':'')+'"></div>';}).join('');
+  var opts = q.opts.map(function(o){return '<button class="q-opt'+(pickerAnswers[q.id]===o.l?' selected':'')+'" data-val="'+o.l+'"><div class="q-opt-label">'+o.l+'</div><div class="q-opt-sub">'+o.s+'</div></button>';}).join('');
+  var backBtn = pickerStep>0 ? '<button class="btn-back" id="pickerBack">← Back</button>' : '';
+  document.getElementById('pickerQuestions').innerHTML =
+    '<div class="picker-q active"><div class="q-progress">'+dots+'</div><div class="q-num">Question '+(pickerStep+1)+' of '+pickerQs.length+'</div><div class="q-text">'+q.text+'</div>'+(q.sub?'<div class="q-sub">'+q.sub+'</div>':'')+
+    '<div class="q-options">'+opts+'</div>'+
+    '<div class="q-nav">'+backBtn+'<button class="btn-next" id="pickerNext" '+(pickerAnswers[q.id]?'':'disabled')+'>'+( pickerStep===pickerQs.length-1?'Find my restaurant →':'Next →')+'</button></div></div>';
+  document.querySelectorAll('.q-opt').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      pickerAnswers[q.id] = btn.getAttribute('data-val');
+      document.querySelectorAll('.q-opt').forEach(function(b){b.classList.remove('selected');});
+      btn.classList.add('selected');
+      document.getElementById('pickerNext').disabled = false;
+    });
+  });
+  document.getElementById('pickerNext').addEventListener('click', function(){
+    if(pickerStep < pickerQs.length-1){pickerStep++;renderPickerQ();}
+    else showPickerResult();
+  });
+  var backEl = document.getElementById('pickerBack');
+  if(backEl) backEl.addEventListener('click', function(){pickerStep--;renderPickerQ();});
+}
+function showPickerResult() {
+  var a = pickerAnswers;
+  var pool = V.filter(function(v){
+    if(v.city!==a.city) return false;
+    if(a.time==='Lunch' && !v.meals.includes('lunch')) return false;
+    if(a.time==='Dinner' && !v.meals.includes('dinner')) return false;
+    if(a.time==='Breakfast / coffee' && !v.meals.includes('breakfast')&&!v.meals.includes('snack')) return false;
+    if(a.time==='Drinks / tapas' && !v.meals.includes('drinks')&&!v.meals.includes('lunch')&&!v.meals.includes('dinner')) return false;
+    if(a.budget==='Under €30' && (v.price.includes('€€€')||v.price==='€€€€')) return false;
+    if(a.budget==='€30–60' && v.price==='€€€€') return false;
+    if(a.vibe==='Special occasion' && !v.gem) return false;
+    if(a.cuisine==='Spanish / traditional' && !v.tags.some(function(t){return ['traditional','tapas','paella','galician','catalan','vermouth','local','historic'].includes(t);})) return false;
+    if(a.cuisine==='Seafood' && !v.tags.some(function(t){return ['seafood','fish','bomba'].includes(t);})) return false;
+    if(a.cuisine==='Creative / modern' && !v.tags.some(function(t){return ['creative','fusion','michelin','michelin-pedigree','natural-wine'].includes(t);})) return false;
+    return true;
+  });
+  if(!pool.length) pool = V.filter(function(v){return v.city===a.city&&v.gem;});
+  if(!pool.length) pool = V.filter(function(v){return v.city===a.city;});
+  var pick = pool[Math.floor(Math.random()*pool.length)];
+  var cb = {Valencia:'bv',Madrid:'bm',Toledo:'bt',Barcelona:'bb'}[pick.city]||'bv';
+  var cbBg = {Valencia:'rgba(212,71,42,.25)',Madrid:'rgba(58,107,181,.25)',Toledo:'rgba(107,138,58,.25)',Barcelona:'rgba(155,58,181,.25)'}[pick.city]||'rgba(200,146,58,.2)';
+  var ml = pick.mapUrl ? '<a class="btn-maps" href="'+pick.mapUrl+'" target="_blank">📍 Open in Maps</a>' : '';
+  var bl = pick.bookingUrl ? '<a class="btn-maps" href="'+pick.bookingUrl+'" target="_blank" style="background:var(--fgreen)">🔗 Reserve Now</a>' : '';
+  document.getElementById('pickerResult').innerHTML =
+    '<div class="result-card"><div class="result-header"><div class="result-verdict">★ Your Pick for Tonight</div><div class="result-name">'+pick.name+'</div><div class="result-tagline">'+pick.tagline+'</div><div class="result-city-badge badge '+cb+'" style="background:'+cbBg+'">'+pick.city+'</div></div>'+
+    '<div class="result-body"><div class="result-why">'+pick.verdict+'</div>'+
+    '<div class="result-details"><div class="rd-item"><div class="rd-key">Price</div><div class="rd-val price">'+pick.price+' · '+pick.priceReal+'</div></div><div class="rd-item"><div class="rd-key">Location</div><div class="rd-val">'+pick.hood+'</div></div><div class="rd-item"><div class="rd-key">Hours</div><div class="rd-val">'+pick.hours+'</div></div><div class="rd-item"><div class="rd-key">Reservation</div><div class="rd-val">'+pick.reserveNote+'</div></div></div>'+
+    '<p style="font-size:.82rem;line-height:1.6;color:rgba(237,230,216,.78);margin-bottom:1.2rem;">'+pick.desc+'</p>'+
+    '<div class="result-actions">'+ml+bl+'<button class="btn-diff" id="pickDiff">Show me another →</button><button class="btn-retry" id="pickRetry">Start over</button></div></div></div>';
+  document.getElementById('pickerResult').classList.add('active');
+  document.getElementById('pickerQuestions').innerHTML = '';
+  document.getElementById('pickRetry').addEventListener('click', startPicker);
+  document.getElementById('pickDiff').addEventListener('click', showPickerResult);
+}
+</script>
+</body>
+</html>
