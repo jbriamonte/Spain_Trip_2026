@@ -354,6 +354,54 @@ footer span{color:#e8c07a;}
 /* free time windows */
 .fun-window-row{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;padding:10px 12px;border-radius:8px;margin-bottom:4px;font-size:.82rem;}
 
+/* Tapas Crawls tab */
+.tc-city-block{margin-bottom:2.5rem;}
+.tc-city-header{display:flex;align-items:center;gap:.75rem;padding:1rem 1.2rem;border-radius:8px 8px 0 0;background:var(--surface);border:1px solid var(--border);border-bottom:none;margin-bottom:0;}
+.tc-mad{border-top:3px solid var(--MAD);}.tc-vlc{border-top:3px solid var(--VLC);}.tc-bcn{border-top:3px solid var(--BCN);}
+.tc-city-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;}
+.tc-city-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:600;color:var(--ftext);}
+.tc-city-dates{font-size:.72rem;color:var(--fmuted);margin-top:1px;}
+.tc-routes-row{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;margin-bottom:1rem;}
+@media(max-width:620px){.tc-routes-row{grid-template-columns:1fr;}}
+.tc-route-card{background:var(--card);padding:1.1rem 1.2rem;}
+.tc-route-label{font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem;}
+.afternoon-label{color:#d8a858;}.night-label{color:#8898cc;}
+.tc-route-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;color:var(--ftext);margin-bottom:.2rem;}
+.tc-route-meta{font-size:.71rem;color:var(--fmuted);margin-bottom:.8rem;padding-bottom:.7rem;border-bottom:1px solid var(--border);}
+.tc-route-stops-mini{display:flex;flex-direction:column;gap:.5rem;}
+.tc-mini-stop{display:flex;gap:.6rem;align-items:flex-start;font-size:.78rem;color:rgba(237,230,216,.78);line-height:1.5;}
+.tc-mini-num{width:18px;height:18px;border-radius:50%;background:rgba(200,146,58,.2);color:var(--gold-hi);font-size:.6rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.tc-mini-stop strong{color:var(--ftext);}
+.tc-paid-section{background:var(--surface);border:1px solid var(--border);border-radius:0 0 8px 8px;padding:1.1rem 1.2rem;margin-bottom:.5rem;}
+.tc-paid-label{font-size:.63rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);margin-bottom:.85rem;}
+.tc-paid-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+@media(max-width:560px){.tc-paid-grid{grid-template-columns:1fr;}}
+.tc-tour-card{background:var(--card);border:1px solid var(--border);border-radius:6px;padding:.9rem 1rem;text-decoration:none;display:flex;flex-direction:column;gap:.35rem;transition:all .15s;border-top:2px solid var(--gold);}
+.tc-tour-card:hover{background:var(--card2);border-color:var(--gold);}
+.tc-tour-provider{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-hi);}
+.tc-tour-name{font-size:.86rem;font-weight:600;color:var(--ftext);line-height:1.3;}
+.tc-tour-detail{font-size:.73rem;color:var(--fmuted);line-height:1.5;}
+.tc-tour-pitch{font-size:.74rem;color:rgba(237,230,216,.65);line-height:1.55;padding-top:.35rem;border-top:1px solid var(--border);font-style:italic;}
+
+/* Tapas crawl */
+.crawl-block{margin-bottom:4px;}
+.crawl-header{border-radius:8px;padding:12px 14px;margin-bottom:12px;}
+.crawl-afternoon{background:linear-gradient(135deg,#fef8ec,#fdf0e8);border-left:4px solid var(--ochre);}
+.crawl-night{background:linear-gradient(135deg,#eef4fb,#e8eef8);border-left:4px solid var(--slate);}
+.crawl-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--ink);margin-bottom:3px;}
+.crawl-meta{font-size:.74rem;font-weight:600;color:var(--ink-muted);margin-bottom:6px;}
+.crawl-note{font-size:.78rem;color:var(--ink-muted);line-height:1.55;}
+.crawl-stops{display:flex;flex-direction:column;gap:2px;margin-bottom:10px;}
+.crawl-stop{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;background:var(--page-card);border:1px solid var(--page-border-soft);border-radius:8px;}
+.crawl-num{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;font-size:.7rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.crawl-stop-body{flex:1;min-width:0;}
+.crawl-stop-name{font-weight:700;font-size:.88rem;color:var(--ink);margin-bottom:1px;}
+.crawl-stop-addr{font-size:.7rem;color:var(--ink-muted);margin-bottom:5px;}
+.crawl-stop-desc{font-size:.78rem;color:var(--ink-muted);line-height:1.55;margin-bottom:5px;}
+.crawl-stop-order{font-size:.73rem;color:var(--olive);font-weight:600;background:rgba(74,103,65,.08);border-radius:4px;padding:4px 7px;display:inline-block;}
+.crawl-footer{display:flex;flex-wrap:wrap;gap:8px;padding:8px 0 0;}
+.crawl-total,.crawl-walk{font-size:.74rem;color:var(--ink-muted);background:var(--page-card2);padding:5px 10px;border-radius:20px;border:1px solid var(--page-border-soft);}
+
 /* Hotel cards */
 .hotel-card{border-radius:10px;overflow:hidden;margin-bottom:14px;border:1px solid var(--page-border);}
 .hotel-card:last-child{margin-bottom:0;}
@@ -485,6 +533,7 @@ footer span{color:#e8c07a;}
     <button class="tab-btn" data-tab="fun">🎉 Having Fun in Spain</button>
     <span class="tab-divider">|</span>
     <button class="tab-btn food-tab" data-tab="cheat">🗺 Meal Cheat Sheet</button>
+    <button class="tab-btn food-tab" data-tab="crawls">🍷 Tapas Crawls</button>
     <button class="tab-btn food-tab" data-tab="guide">📖 Full Food Guide</button>
     <button class="tab-btn food-tab" data-tab="picker">🎲 Meal Picker</button>
   </div>
@@ -1199,6 +1248,7 @@ footer span{color:#e8c07a;}
 
     </div><!-- end fun-accordion -->
 
+
       <!-- YOUR HOTELS -->
       <div class="fun-section-card" style="margin-top:10px;">
         <div class="fun-section-header" data-target="fun-hotels">
@@ -1388,6 +1438,190 @@ footer span{color:#e8c07a;}
 
   </div>
 </main></div>
+
+<!-- ===== TAPAS CRAWLS ===== -->
+<div id="tab-crawls" class="tab-panel">
+<div class="food-panel-wrap">
+<div style="max-width:820px;margin:0 auto;padding:2rem 1.5rem 4rem;">
+
+  <!-- HEADER -->
+  <div style="text-align:center;padding-bottom:2rem;border-bottom:1px solid var(--border);margin-bottom:2rem;">
+    <div style="font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;">Self-Guided &amp; Guided Options</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;color:var(--ftext);margin-bottom:.4rem;">Tapas Crawls</h1>
+    <p style="color:var(--fmuted);font-size:.85rem;max-width:520px;margin:0 auto;">Three cities, six self-guided routes, six paid tours — everything you need to eat your way through Spain like a local.</p>
+  </div>
+
+  <!-- ══════════════════════════════════ MADRID ══════════════════════════════════ -->
+  <div class="tc-city-block">
+    <div class="tc-city-header tc-mad">
+      <div class="tc-city-dot" style="background:var(--MAD);box-shadow:0 0 8px var(--MAD);"></div>
+      <div>
+        <div class="tc-city-name">Madrid</div>
+        <div class="tc-city-dates">Apr 29 – May 2</div>
+      </div>
+    </div>
+
+    <!-- Self-guided routes pulled from Having Fun section (summary here) -->
+    <div class="tc-routes-row">
+      <div class="tc-route-card">
+        <div class="tc-route-label afternoon-label">🌅 Afternoon Route</div>
+        <div class="tc-route-title">Malasaña → Chueca</div>
+        <div class="tc-route-meta">Wed/Thu · 2–6 PM · 5 stops · ~€35–45pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>Mercado de San Miguel</strong> — jamón, vermouth, pintxos at the iron-glass market hall</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>Casa Revuelta</strong> — legendary battered bacalao at the bar since 1966, €2.50 a tapa</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>La Casa del Abuelo</strong> — gambas al ajillo in a sizzling clay dish since 1906</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>Taberna de Ángel Sierra</strong> — Almodóvar's bar, barrel vermouth for €2, since 1908</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">5</span><span><strong>Mercado de San Antón</strong> — rooftop terrace, gin tonic, city views to close out</span></div>
+        </div>
+      </div>
+      <div class="tc-route-card">
+        <div class="tc-route-label night-label">🌙 Night Route</div>
+        <div class="tc-route-title">La Latina / Cava Baja</div>
+        <div class="tc-route-meta">Fri May 1 · 8 PM onward · 5 stops · ~€40–55pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>La Perejila</strong> — Cava Baja opener: vermouth, anchovies, get your bearings</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>Taberna Tempranillo</strong> — 200+ Spanish wines by glass, jamón, cheese boards</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>Casa Lucas</strong> — creative tapas, braised pork cheeks, blackboard specials</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>Pez Tortilla</strong> — legendary tortilla in wild flavours (truffle &amp; brie), from 7 PM</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">5</span><span><strong>Bar Cock</strong> — Buñuel's cocktail bar, 1920s British club, perfect nightcap</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid tours — Madrid -->
+    <div class="tc-paid-section">
+      <div class="tc-paid-label">🎟 Guided Tours in Madrid</div>
+      <div class="tc-paid-grid">
+        <a class="tc-tour-card" href="https://www.getyourguide.com/madrid-l44/madrid-tapas-tour-t44714/" target="_blank">
+          <div class="tc-tour-provider">GetYourGuide</div>
+          <div class="tc-tour-name">Madrid Evening Tapas Tour</div>
+          <div class="tc-tour-detail">~€50–65pp · 3 hrs · small group · 4+ stops in La Latina &amp; Las Letras · drinks included</div>
+          <div class="tc-tour-pitch">Best for: Letting a local do the research. Guide explains the culture and history of each stop. Typical evening format — starts around 8 PM.</div>
+        </a>
+        <a class="tc-tour-card" href="https://www.viator.com/tours/Madrid/Madrid-Tapas-Bar-Tour/d566-5239TAPAS/" target="_blank">
+          <div class="tc-tour-provider">Viator</div>
+          <div class="tc-tour-name">Madrid Tapas, Taverns &amp; History Tour</div>
+          <div class="tc-tour-detail">~€55–70pp · 3.5 hrs · max 10 people · combines history &amp; food · evening</div>
+          <div class="tc-tour-pitch">Best for: History lovers. Spends more time on the stories of Madrid's taverns, neighborhoods, and Spanish food culture alongside the eating. More educational than the GYG version.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ VALENCIA ══════════════════════════════════ -->
+  <div class="tc-city-block">
+    <div class="tc-city-header tc-vlc">
+      <div class="tc-city-dot" style="background:var(--VLC);box-shadow:0 0 8px var(--VLC);"></div>
+      <div>
+        <div class="tc-city-name">Valencia</div>
+        <div class="tc-city-dates">May 2–5</div>
+      </div>
+    </div>
+
+    <div class="tc-routes-row">
+      <div class="tc-route-card">
+        <div class="tc-route-label afternoon-label">🌅 Old Town Route</div>
+        <div class="tc-route-title">El Carmen &amp; Old City</div>
+        <div class="tc-route-meta">Any afternoon · 3–7 PM · 4 stops · ~€25–40pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>Horchatería de Santa Catalina</strong> — Valencia's most historic horchata house since 1836. Start with horchata and fartons. Non-negotiable.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>Bar La Pilareta</strong> (El Carmen) — classic bar, mussels thrown into crates old-school style, montaditos with chorizo &amp; morcilla</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>Jimmy Glass Jazz Bar</strong> — Valencia's legendary jazz bar in El Carmen. Excellent craft cocktails, vinyl records, live music evenings</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>El Aprendiz de Tapas</strong> (Benimaclet) — eclectic fusion tapas, staggeringly cheap, duck before they raise the prices</span></div>
+        </div>
+      </div>
+      <div class="tc-route-card">
+        <div class="tc-route-label night-label">🌙 Ruzafa Route</div>
+        <div class="tc-route-title">Ruzafa Neighborhood Crawl</div>
+        <div class="tc-route-meta">Evening · 8 PM onward · 4 stops · ~€35–55pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>Vermúdez</strong> — the 10-year institution: house vermouth, crispy octopus, legendary semi-liquid cheesecake. Start here.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>La Tasqueta del Mercat Ruzafa</strong> — 5-course menu for under €25, bacalao croquettes, tuna tartare, incredible value</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>El Rodamón de Russafa</strong> — fusion tapas &amp; Priorat wine: Asian-Spanish sharing plates, excellent wine rack across the back wall</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>Timoteo Gastrobar</strong> — Spanish-international fusion: patatas bravas with sobrasada, aubergine with miso, jamón bikini in brioche</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid tours — Valencia -->
+    <div class="tc-paid-section">
+      <div class="tc-paid-label">🎟 Guided Tours in Valencia</div>
+      <div class="tc-paid-grid">
+        <a class="tc-tour-card" href="https://www.getyourguide.com/valencia-l49/valencia-food-tour-with-tapas-drinks-with-a-local-t618608/" target="_blank">
+          <div class="tc-tour-provider">GetYourGuide — Secret Food Tours</div>
+          <div class="tc-tour-name">Valencia Food Tour with Tapas &amp; Drinks</div>
+          <div class="tc-tour-detail">~€75–90pp · 3 hrs · max 10 people · 4 local bars · drinks included · Old Town focus</div>
+          <div class="tc-tour-pitch">Best for: Getting straight to the best local bars without research. Guide takes you into family-run spots tourists walk straight past. Praised for finding genuine hidden gems, not tourist traps. Both morning and evening slots available.</div>
+        </a>
+        <a class="tc-tour-card" href="https://www.getyourguide.com/valencia-l49/valencia-daytime-tapas-tasting-tour-w-central-market-visit-t441709/" target="_blank">
+          <div class="tc-tour-provider">GetYourGuide — Morning Tour</div>
+          <div class="tc-tour-name">Valencia Morning Food Tour + Central Market</div>
+          <div class="tc-tour-detail">~€60–75pp · 3 hrs · morning · includes Central Market visit + 4+ food stops · horchata, vermouth, tapas</div>
+          <div class="tc-tour-pitch">Best for: Pairing with your Monday morning market visit (May 4). Combines the Central Market exploration with guided food stops including almuerzo (Valencia's morning snack culture), horchata, and the Spanish breakfast ritual. Excellent starting-the-trip energy.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════ BARCELONA ══════════════════════════════════ -->
+  <div class="tc-city-block" style="margin-bottom:0;">
+    <div class="tc-city-header tc-bcn">
+      <div class="tc-city-dot" style="background:var(--BCN);box-shadow:0 0 8px var(--BCN);"></div>
+      <div>
+        <div class="tc-city-name">Barcelona</div>
+        <div class="tc-city-dates">May 5–8</div>
+      </div>
+    </div>
+
+    <div class="tc-routes-row">
+      <div class="tc-route-card">
+        <div class="tc-route-label afternoon-label">🌅 El Born Route</div>
+        <div class="tc-route-title">El Born — Steps from the Hotel</div>
+        <div class="tc-route-meta">Any evening · 7 PM onward · 4 stops · ~€30–45pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>Nømad Coffee</strong> — Barcelona's best specialty roasters. Walk over (2 min from hotel) for an afternoon coffee before the evening begins.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>El Xampanyet</strong> (Carrer de Montcada) — open since 1929, house cava from €2, anchovies, tortilla, the soul of El Born. Arrive at 7 PM sharp.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>Bar del Pla</strong> (El Born) — best patatas bravas in BCN, 30+ natural wines, oxtail, shirts that say "F**k Sangria, Drink Natural Wine"</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>Bar Brutal</strong> (El Born) — grungy natural wine bar, loud and lively, late-night energy. Perfect final stop before heading home.</span></div>
+        </div>
+      </div>
+      <div class="tc-route-card">
+        <div class="tc-route-label night-label">🌙 Barceloneta + Poble-sec</div>
+        <div class="tc-route-title">Beyond El Born — Venture Out</div>
+        <div class="tc-route-meta">Daytime/evening · flexible · 4 stops · ~€30–50pp</div>
+        <div class="tc-route-stops-mini">
+          <div class="tc-mini-stop"><span class="tc-mini-num">1</span><span><strong>La Cova Fumada</strong> (Barceloneta) — birthplace of the bomba, cash only, closes when sold out, open 9 AM–3 PM. Go early.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">2</span><span><strong>Quimet &amp; Quimet</strong> (Poble-sec) — standing room only, montaditos with tinned seafood, house vermouth, midday only (noon–4 PM)</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">3</span><span><strong>Cal Pep</strong> (El Born) — Barcelona's most storied tapas counter. The tortilla española here is, by consensus, in a category of its own.</span></div>
+          <div class="tc-mini-stop"><span class="tc-mini-num">4</span><span><strong>Bodega La Puntual</strong> (Carrer de Montcada) — oyster bar at the entrance, Iberian arroz inside, excellent wine, Catalan charm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Paid tours — Barcelona -->
+    <div class="tc-paid-section" style="margin-bottom:0;">
+      <div class="tc-paid-label">🎟 Guided Tours in Barcelona</div>
+      <div class="tc-paid-grid">
+        <a class="tc-tour-card" href="https://www.getyourguide.com/barcelona-l45/barcelona-tapas-wine-experience-walking-tour-t57612/" target="_blank">
+          <div class="tc-tour-provider">GetYourGuide — El Born &amp; Gothic Quarter</div>
+          <div class="tc-tour-name">Barcelona Wine &amp; Tapas Tour — El Born + Gothic</div>
+          <div class="tc-tour-detail">~€75–95pp · 3 hrs · max 12 people · 4 bars · 9 tastings · wine &amp; cava included · evening</div>
+          <div class="tc-tour-pitch">Best for: A guided exploration of the exact neighborhoods you're staying in. Covers El Born and Gothic Quarter, includes 4 bars, 9 tastings equivalent to a full meal, and paired wines at each stop. The most natural fit given your hotel location — you're already in the right neighborhood.</div>
+        </a>
+        <a class="tc-tour-card" href="https://www.viator.com/tours/Barcelona/Tapas-and-Wine-Experience-in-Barcelona/d562-16168P1" target="_blank">
+          <div class="tc-tour-provider">Viator — Gothic Quarter + El Born</div>
+          <div class="tc-tour-name">Barcelona Tapas &amp; Wine Experience Walking Tour</div>
+          <div class="tc-tour-detail">~€80–100pp · 3 hrs · max 36 people · 4 stops inc. Gothic Quarter &amp; El Born · Catalan wine focus · option to add flamenco</div>
+          <div class="tc-tour-pitch">Best for: More wine depth. This tour is more wine-centric — 5 different Catalan wines paired with tapas across 4 stops, starting at Plaça Sant Jaume and ending near Santa Maria del Mar. Larger group than the GYG version. Has an optional flamenco add-on at the end if you want to extend the evening.</div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
 
 <!-- ===== MEAL CHEAT SHEET ===== -->
 <div id="tab-cheat" class="tab-panel">
@@ -1824,17 +2058,16 @@ function buildCheat() {
   + '<div class="timing-banner"><div class="tb-icon">⏰</div><div><h4>Spanish Dining Times — Read This First</h4><p>Spain runs <strong style="color:var(--ftext)">2–3 hours later</strong> than you\'re used to. Lunch is <strong style="color:var(--ftext)">2:00–4:00 PM</strong>. Dinner doesn\'t start until <strong style="color:var(--ftext)">9:00–9:30 PM</strong>. If a place says "walk-in OK," that means walk in at 9 PM, not 6:30 PM.</p></div></div>'
 
   + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-mad"></div><h2>Madrid</h2><div class="dates">Apr 29 – May 2</div></div><div class="nights-grid">'
-  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Wednesday</div><div class="night-date">Apr 29 · Arrival</div></div><div><div class="night-pick">No reservation — walk around</div><div class="night-verdict">Jet-lagged first night. Keep it casual.</div><div class="night-meta">Wander Malasaña or near hotel. Vinitus Gran Vía is reliable if you want something specific.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€10–25</span></div></div>'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Wednesday</div><div class="night-date">Apr 29 · Arrival · 🎾 Tennis 8 PM</div></div><div><div class="night-pick">Tapas crawl + shopping — wrap up by 6 PM</div><div class="night-verdict">Need to leave for Caja Mágica by ~6:45 PM — eat early and graze.</div><div class="night-meta">Malasaña vintage shopping in the afternoon. Start tapas early (~5:30–6 PM — acceptable your first night). <strong style="color:var(--ftext)">Mercado de San Miguel</strong> near Plaza Mayor for quick bites. <strong style="color:var(--ftext)">Taberna de Angel Sierra</strong> for a fast vermouth. Keep it light — Caja Mágica has food at the courts if you\'re still hungry.<br><br><span style="color:var(--amber)">⚠️ Caja Mágica by 7:20 PM → leave hotel by ~6:45 PM</span></div></div><div class="night-badge"><span class="nbadge nb-warn">Done by 6 PM</span><span class="nbadge nb-price">€15–25</span></div></div>'
   + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Thursday</div><div class="night-date">Apr 30 · Flamenco 9 PM</div></div><div><div class="night-pick">Quick bite — done by 7:30 PM</div><div class="night-verdict">Must eat early — flamenco at 9 PM.</div><div class="night-meta">El Brillante near Atocha for bocadillos (counter, 20 min). No sit-down reservation.</div></div><div class="night-badge"><span class="nbadge nb-warn">Done by 7:30</span><span class="nbadge nb-price">€8–15</span></div></div>'
-  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--MAD)">Friday</div><div class="night-date">May 1 · Labor Day + Toledo</div></div><div><div class="night-pick">Tapas crawl — no reservation needed</div><div class="night-verdict">Labor Day: many restaurants closed. But the streets are alive.</div><div class="night-meta"><strong style="color:var(--ftext)">La Latina / Calle Cava Baja</strong> — walk in and duck into whatever looks lively. Taberna de Angel Sierra for vermouth first.</div></div><div class="night-badge"><span class="nbadge nb-warn">⚠️ Many closed</span><span class="nbadge nb-easy">Walk-in crawl</span><span class="nbadge nb-price">€20–35</span></div></div>'
-  + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Saturday</div><div class="night-date">May 2 · Last Madrid night</div></div><div><div class="night-pick">★ Raza Madrid Barquillo — OR — ★ Trèsde</div><div class="night-verdict">Your one real sit-down dinner in Madrid. Make it count.</div><div class="night-meta"><strong style="color:var(--ftext)">Raza Barquillo</strong> — candlelit steakhouse, open fire grill, ~€80–90pp.<br><br><strong style="color:var(--ftext)">Trèsde</strong> — Michelin Bib Gourmand, €46 3-course, sherry/sake/wine pairing, dinner only. Book 2–3 weeks ahead.</div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Reserve Now</span><span class="nbadge nb-price">€46–90pp</span></div></div>'
+  + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Friday</div><div class="night-date">May 1 · Back from Toledo ~5 PM</div></div><div><div class="night-pick">★ Raza Madrid Barquillo — OR — ★ Trèsde</div><div class="night-verdict">Your one real sit-down dinner in Madrid. Make it count.</div><div class="night-meta"><strong style="color:var(--ftext)">Raza Barquillo</strong> — candlelit steakhouse, open fire grill, Wagyu, ~€80–90pp. Rated 4.8/5. Book ahead — Labor Day weekend fills fast.<br><br><strong style="color:var(--ftext)">Trèsde</strong> — Michelin Bib Gourmand, €46 3-course, sherry/sake/wine pairing, dinner only. Book 2–3 weeks ahead.<br><br><span style="color:var(--amber)">⚠️ Labor Day — confirm both are open before booking.</span></div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Reserve Now</span><span class="nbadge nb-price">€46–90pp</span></div></div>'
   + '</div></div>'
 
   + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-tol"></div><h2>Toledo</h2><div class="dates">May 1 · Day trip</div></div><div class="nights-grid"><div class="night-row free"><div><div class="night-label" style="color:var(--TOL)">Friday Lunch</div><div class="night-date">May 1 · ~2 PM</div></div><div><div class="night-pick">Restaurante Taberna el Gallo Toledo</div><div class="night-verdict">Best sit-down lunch in the historic center.</div><div class="night-meta">Order <strong style="color:var(--ftext)">carcamusas</strong> — Toledo\'s signature dish, pork and vegetables. Also try partridge if available.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€20–35pp</span></div></div></div>'
   + '<div class="section-label-sm">🍬 Must-Do in Toledo</div><div class="quick-grid" style="grid-template-columns:1fr"><div class="quick-card" style="border-left:2px solid var(--TOL)"><div class="qc-name">★ Pastry Santo Tome — Mazapán</div><div class="qc-sub">Toledo Center · Daily · ~€3–15</div><div class="qc-tag">Toledo is the marzipan capital of Spain. Buy a box. Non-negotiable stop.</div></div></div></div>'
 
   + '<div class="city-sheet"><div class="city-sheet-header"><div class="city-dot dot-vlc"></div><h2>Valencia</h2><div class="dates">May 2–5</div></div><div class="nights-grid">'
-  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--VLC)">Saturday Eve</div><div class="night-date">May 2 · Arrive ~5:45 PM</div></div><div><div class="night-pick">Depends on soccer match schedule</div><div class="night-verdict">Two scenarios — plan around whichever applies.</div><div class="night-meta"><strong style="color:var(--ftext)">Match Saturday:</strong> Quick tapas near Mestalla pre-game.<br><br><strong style="color:var(--ftext)">Match Sunday:</strong> ★ Canalla Bistro or Casa Montaña — reserve this night. Arrive at 9 PM.</div></div><div class="night-badge"><span class="nbadge nb-warn">⚽ Match-dependent</span><span class="nbadge nb-price">€35–55pp</span></div></div>'
+  + '<div class="night-row constrained"><div><div class="night-label" style="color:var(--VLC)">Saturday</div><div class="night-date">May 2 · Arrive ~5:45 PM</div></div><div><div class="night-pick">Dinner in Valencia — match-dependent</div><div class="night-verdict">You\'re in Valencia tonight regardless of match schedule.</div><div class="night-meta"><strong style="color:var(--ftext)">Match Saturday:</strong> Quick tapas near Mestalla pre-game (Bar Mestalla, walk-in).<br><br><strong style="color:var(--ftext)">Match Sunday:</strong> ★ Canalla Bistro or Casa Montaña — reserve ahead, arrive at 9 PM.</div></div><div class="night-badge"><span class="nbadge nb-warn">⚽ Match-dependent</span><span class="nbadge nb-price">€20–55pp</span></div></div>'
   + '<div class="night-row free"><div><div class="night-label" style="color:var(--VLC)">Sunday</div><div class="night-date">May 3</div></div><div><div class="night-pick">★ Karak (if match was Saturday)</div><div class="night-verdict">Best dinner of the entire Valencia leg. Book it.</div><div class="night-meta"><strong style="color:var(--ftext)">If match was Saturday:</strong> Reserve Karak — tasting menu (choose medium), wine pairing essential, ~€80–100pp. Book 2–3 weeks ahead.<br><br><strong style="color:var(--ftext)">If match is Sunday:</strong> Post-match, keep it easy. Walk-in tapas. <a class="night-link" href="https://www.thefork.com/restaurant/karak-r835969" target="_blank">🔗 Book Karak ↗</a></div></div><div class="night-badge"><span class="nbadge nb-reserve">📅 Book Karak Now</span><span class="nbadge nb-price">€80–100pp</span></div></div>'
   + '<div class="night-row special"><div><div class="night-label" style="color:var(--gold)">Monday</div><div class="night-date">May 4 · Cooking class day</div></div><div><div class="night-pick">Light evening — beach tapas or El Carmen</div><div class="night-verdict">You\'ve already cooked and eaten paella. Keep it relaxed.</div><div class="night-meta">Jimmy Glass Jazz Bar for drinks after. Or a simple dinner near the Old Town. No reservation needed.</div></div><div class="night-badge"><span class="nbadge nb-easy">Walk-in</span><span class="nbadge nb-price">€15–30pp</span></div></div>'
   + '</div></div>'
@@ -1932,5 +2165,7 @@ function showPickerResult() {
   document.getElementById('pickDiff').addEventListener('click', showPickerResult);
 }
 </script>
+</body>
+</html>
 </body>
 </html>
